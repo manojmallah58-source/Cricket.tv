@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>PKTZ LIVE - Elite Streaming</title>
+  <title>Mohit Vox - Elite Streaming</title>
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;800&family=Outfit:wght@400;700&family=Bebas+Neue&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
@@ -228,7 +228,7 @@
 
   <!-- LOADING SCREEN -->
   <div id="loading-screen">
-    <div class="load-logo">PKTZ <span>LIVE</span></div>
+    <div class="load-logo">MOHIT <span>VOX</span></div>
     <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #666;">Connecting stream...</p>
   </div>
 
@@ -240,7 +240,7 @@
   </div>
 
   <header>
-    <div class="header-title">PKTZ <span>LIVE</span></div>
+    <div class="header-title">MOHIT <span>VOX</span></div>
   </header>
 
   <!-- MAIN STAGE -->
@@ -251,7 +251,7 @@
   </div>
 
   <div class="actions">
-    <a href="https://t.me/+Z1r6ewgtezg0MmI1" target="_blank" class="btn-action">CLICK FOLLOW TELEGRAM</a>
+    <a href="https://t.me/+OEjgaP7HMDo1OTg1" target="_blank" onclick="verifyAccess()" class="btn-action">CLICK FOLLOW TELEGRAM</a>
     <div class="grid">
       <button onclick="location.reload()" class="small-btn"><i class="material-icons">refresh</i> REFRESH</button>
       <button onclick="shareLink()" class="small-btn"><i class="material-icons">share</i> SHARE</button>
@@ -291,7 +291,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
       <div class="accent-line"></div>
-      <div class="popup-brand">PKTZ LIVE</div>
+      <div class="popup-brand">MOHIT VOX</div>
       <p>To watch all live matches seamlessly, joining our official Telegram channel is compulsory. Once joined, you can continue watching!</p>
       
       <div class="popup-btn-container">
@@ -305,7 +305,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
   <script>
-    const JSON_URL = "https://cricket-yoddha-2-o-json.vercel.app/links.json";
+    const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_POPUP_LINK = "https://t.me/+WU7Ei37dxuJkODk1";
 
     window.onload = () => {
@@ -372,7 +372,7 @@
 
     function shareLink() {
       if (navigator.share) {
-        navigator.share({ title: 'PKTZ LIVE', url: window.location.href }).catch(() => {});
+        navigator.share({ title: 'Mohit Vox', url: window.location.href }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
         alert("Link copied to clipboard!");
