@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <title>CRICKET YODDHA - Live Stream</title>
   
-  <!-- Google Fonts & Material Icons -->
+  <!-- Fonts & Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     /* ========================================================
-       PREMIUM OTT THEME & COLOR PALETTE
+       PREMIUM OTT THEME & COLOR VARIABLES
        ======================================================== */
     :root {
       --app-bg: #060811;
@@ -51,7 +51,7 @@
     }
 
     /* ========================================================
-       CLEAN SPLASH SCREEN (NO TEXT / ONLY LOGO & LOADER)
+       CLEAN SPLASH SCREEN (LOGO & LOADER ONLY, NO TEXT)
        ======================================================== */
     #loading-screen {
       position: fixed;
@@ -118,7 +118,7 @@
     }
 
     /* ========================================================
-       TOP APP BAR
+       TOP HEADER BAR
        ======================================================== */
     header {
       height: 52px;
@@ -281,7 +281,7 @@
     }
 
     /* ========================================================
-       ACTIONS CONTAINER
+       ACTIONS AREA (CLEAN & UNCLUTTERED)
        ======================================================== */
     .room-actions-container {
       padding: 12px 14px;
@@ -408,7 +408,7 @@
     }
 
     /* ========================================================
-       MODAL OVERLAYS & POPUPS
+       MODAL OVERLAYS & POPUPS (GLASSMORPHISM)
        ======================================================== */
     .overlay {
       display: none;
@@ -493,7 +493,7 @@
     .btn-join:active { transform: scale(0.97); }
 
     /* ========================================================
-       TIMED LOOT POP-UP (EMBEDDED VIDEO + EXCITED BUTTONS)
+       TIMED LOOT POP-UP (EMBEDDED VIDEO & ENGLISH BUTTONS)
        ======================================================== */
     .popup-loot {
       border: 1px solid rgba(255, 184, 0, 0.5);
@@ -514,10 +514,10 @@
       letter-spacing: 0.6px;
       text-transform: uppercase;
     }
-    /* Compact video frame inside pop-up */
+    /* Compact video frame inside the modal */
     .modal-video-box {
       width: 100%;
-      height: 110px;
+      height: 112px;
       border-radius: 12px;
       overflow: hidden;
       margin: 8px 0 10px;
@@ -590,7 +590,7 @@
     .btn-excited:active { transform: scale(0.97); }
     .btn-not-excited {
       width: 100%;
-      padding: 9px;
+      padding: 9.5px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #94a3b8;
@@ -674,7 +674,7 @@
   </div>
 
   <!-- ========================================================
-       TOP HEADER
+       TOP APP BAR
        ======================================================== -->
   <header>
     <div class="header-logo-wrap">
@@ -686,7 +686,7 @@
   </header>
 
   <!-- ========================================================
-       MAIN PLAYER
+       MAIN PLAYER STAGE
        ======================================================== -->
   <div id="main-stage">
     <div class="video-box">
@@ -775,7 +775,7 @@
     <div class="popup popup-loot">
       <div class="modal-loot-badge">🔥 Limited Loot Drop</div>
 
-      <!-- Embedded Loot Video Frame -->
+      <!-- Embedded Video Box -->
       <div class="modal-video-box">
         <div class="modal-video-live-pill">LIVE LOOT</div>
         <video id="modalLootVideo" autoplay muted playsinline loop>
@@ -788,7 +788,7 @@
       </div>
 
       <p class="modal-loot-desc">
-        Secret price glitches, free shopping coupons aur daily giveaway drops ke liye hamara Loot channel join karein!
+        Unlock secret price glitch deals, free shopping loots, and daily coupon codes right now!
       </p>
 
       <div class="modal-actions-col">
@@ -806,7 +806,7 @@
   </div>
 
   <!-- ========================================================
-       SCRIPTS & DYNAMIC DATA INTEGRATION
+       SCRIPTS & LOGIC INTEGRATION
        ======================================================== -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
@@ -840,7 +840,7 @@
       initTimedLootPopup();
     };
 
-    // 1. DYNAMIC STREAM LOADER
+    // 1. STREAM LOADER (DYNAMIC VIA JSON)
     async function loadStream() {
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
@@ -883,7 +883,7 @@
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
         document.getElementById('main-player').src = iframeSrc;
         
-        // Hide clean splash screen
+        // Hide splash screen smoothly
         const splash = document.getElementById('loading-screen');
         splash.style.opacity = '0';
         setTimeout(() => { splash.style.display = 'none'; }, 450);
@@ -917,7 +917,7 @@
     function initTimedLootPopup() {
       setTimeout(() => {
         const forcePop = document.getElementById('forcePop');
-        // Pehle check karenge agar user ne initial popup unlock kar liya hai
+        // Trigger timed pop-up only if first lock is not currently showing
         if (!forcePop.classList.contains('active')) {
           const pop = document.getElementById('timedLootPop');
           pop.classList.add('active');
@@ -927,7 +927,7 @@
       }, CONFIG.lootDelay);
     }
 
-    // a) I am Excited Handler
+    // a) "I am Excited" Click Handler
     function handleExcitedLoot() {
       const video = document.getElementById('modalLootVideo');
       if (video) video.pause();
@@ -935,7 +935,7 @@
       window.open(LOOT_CHANNEL_LINK, "_blank");
     }
 
-    // b) Not Excited Handler
+    // b) "Not Excited" Click Handler
     function handleNotExcitedLoot() {
       const video = document.getElementById('modalLootVideo');
       if (video) video.pause();
@@ -962,11 +962,11 @@
         navigator.share({ title: 'Cricket Yoddha Live', url: window.location.href }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
-        showToast("✓ Link copied to clipboard!");
+        showToast("Link copied to clipboard!");
       }
     }
 
-    // 5. FIREBASE LIVE COUNTER
+    // 5. FIREBASE LIVE VIEWERS SETUP
     const firebaseConfig = { 
       apiKey: "AIzaSyA-vR50CMDYJVHApJir-6fmgRqhFiqQDU8", 
       authDomain: "my-website-cricket.firebaseapp.com", 
