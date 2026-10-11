@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Malik Bhai - Elite Streaming</title>
+  <title>CRICKET SUPERFANS - Elite Streaming</title>
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;800&family=Outfit:wght@400;700&family=Bebas+Neue&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
@@ -228,7 +228,7 @@
 
   <!-- LOADING SCREEN -->
   <div id="loading-screen">
-    <div class="load-logo">MALIK <span>BHAI</span></div>
+    <div class="load-logo">CRICKET <span>SUPERFANS</span></div>
     <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #666;">Connecting stream...</p>
   </div>
 
@@ -240,7 +240,7 @@
   </div>
 
   <header>
-    <div class="header-title">MALIK <span>BHAI</span></div>
+    <div class="header-title">CRICKET <span>SUPERFANS</span></div>
   </header>
 
   <!-- MAIN STAGE -->
@@ -251,7 +251,7 @@
   </div>
 
   <div class="actions">
-    <a href="https://t.me/+AQsX74L8TQY4MDI1" target="_blank" class="btn-action">CLICK FOLLOW TELEGRAM</a>
+    <a href="https://t.me/+9eqdUpSA22FmMTFl" target="_blank" onclick="verifyAccess()" class="btn-action">CLICK FOLLOW TELEGRAM</a>
     <div class="grid">
       <button onclick="location.reload()" class="small-btn"><i class="material-icons">refresh</i> REFRESH</button>
       <button onclick="shareLink()" class="small-btn"><i class="material-icons">share</i> SHARE</button>
@@ -291,7 +291,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
       <div class="accent-line"></div>
-      <div class="popup-brand">MALIK BHAI</div>
+      <div class="popup-brand">CRICKET SUPERFANS</div>
       <p>To watch all live matches seamlessly, joining our official Telegram channel is compulsory. Once joined, you can continue watching!</p>
       
       <div class="popup-btn-container">
@@ -306,7 +306,7 @@
 
   <script>
     const JSON_URL = "https://cricket-yoddha-2-o-json.vercel.app/links.json";
-    const TELEGRAM_POPUP_LINK = "https://t.me/+uWx9klWmiexiMGM1";
+    const TELEGRAM_POPUP_LINK = "https://t.me/+9eqdUpSA22FmMTFl";
 
     window.onload = () => {
       // Har baar page load/reload hone par theek 5 second baad popup aayega
@@ -359,7 +359,6 @@
       document.getElementById('error-msg').innerText = msg;
     }
 
-    // Popup close karke video play karne ke liye
     function verifyAccess() {
       document.getElementById('forcePop').classList.remove('active');
       document.getElementById('main-stage').classList.remove('locked');
@@ -372,7 +371,7 @@
 
     function shareLink() {
       if (navigator.share) {
-        navigator.share({ title: 'Malik Bhai', url: window.location.href }).catch(() => {});
+        navigator.share({ title: 'Cricket Superfans', url: window.location.href }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
         alert("Link copied to clipboard!");
