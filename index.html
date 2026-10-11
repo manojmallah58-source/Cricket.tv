@@ -14,11 +14,11 @@
       --surface: #121624;
       --surface-border: rgba(255, 255, 255, 0.09);
       --accent-cyan: #00a8ff;
-      --accent-cyan-glow: rgba(0, 168, 255, 0.35);
       --accent-mint: #00f076;
       --accent-flame: #ff5500;
       --accent-gold: #ffb800;
       --text-muted: #8c96a8;
+      --tg-blue: #0088cc;
     }
 
     * {
@@ -208,7 +208,7 @@
       width: 100%;
     }
 
-    /* 🔥 HIGH-CONVERTING ANIMATED TELEGRAM BUTTON */
+    /* TELEGRAM BUTTON */
     .vip-telegram-btn {
       display: flex;
       align-items: center;
@@ -224,7 +224,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease;
       animation: breathingGlow 3s infinite alternate;
     }
     @keyframes breathingGlow {
@@ -233,7 +233,6 @@
     }
     .vip-telegram-btn:active {
       transform: scale(0.96);
-      box-shadow: 0 2px 10px rgba(0, 136, 204, 0.4);
     }
     .vip-telegram-btn::after {
       content: '';
@@ -299,7 +298,7 @@
       gap: 3px;
     }
 
-    /* QUICK APP CONTROL PILLS */
+    /* QUICK CONTROLS */
     .controls-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -327,37 +326,37 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* 🔥 INTERACTIVE SPONSORED LOOT CARD (ENTIRE CARD CLICKABLE) */
+    /* 🔥 MODIFIED HIGH-CONVERTING LOOT SECTION */
     .interactive-loot-link {
       text-decoration: none;
       display: block;
-      border-radius: 14px;
+      border-radius: 16px;
       transition: transform 0.15s ease;
     }
     .interactive-loot-link:active {
       transform: scale(0.97);
     }
     .sponsor-loot-card {
-      background: linear-gradient(145deg, #181b2a 0%, #0d0f18 100%);
-      border: 1.5px solid rgba(255, 184, 0, 0.45);
-      border-radius: 14px;
-      padding: 10px;
+      background: linear-gradient(145deg, #181b2c 0%, #0d0f1a 100%);
+      border: 1.5px solid rgba(255, 184, 0, 0.5);
+      border-radius: 16px;
+      padding: 11px;
       display: flex;
       gap: 12px;
       align-items: center;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.65), 0 0 15px rgba(255, 184, 0, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 184, 0, 0.15);
       position: relative;
       cursor: pointer;
     }
     .sponsor-video-side {
-      width: 108px;
-      height: 72px;
+      width: 115px;
+      height: 76px;
       flex-shrink: 0;
-      border-radius: 9px;
+      border-radius: 10px;
       overflow: hidden;
       position: relative;
       background: #000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     }
     .sponsor-video-side video {
       width: 100%;
@@ -367,15 +366,16 @@
     }
     .sponsor-badge-tag {
       position: absolute;
-      top: 3px;
-      left: 3px;
+      top: 4px;
+      left: 4px;
       background: var(--accent-flame);
       color: #fff;
       font-size: 7.5px;
       font-weight: 900;
       padding: 2px 5px;
-      border-radius: 3px;
+      border-radius: 4px;
       letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     .sponsor-content-side {
       display: flex;
@@ -390,9 +390,12 @@
       color: var(--accent-gold);
       letter-spacing: 0.8px;
       text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     .sponsor-heading {
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 800;
       color: #fff;
       line-height: 1.25;
@@ -402,6 +405,9 @@
       font-size: 9.5px;
       color: var(--accent-mint);
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 3px;
     }
     .btn-claim-loot {
       display: inline-flex;
@@ -410,14 +416,14 @@
       background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-flame) 100%);
       color: #000;
       padding: 7px 12px;
-      border-radius: 7px;
+      border-radius: 8px;
       font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.6px;
       width: fit-content;
-      box-shadow: 0 3px 12px rgba(255, 85, 0, 0.45);
-      margin-top: 2px;
+      box-shadow: 0 4px 14px rgba(255, 85, 0, 0.45);
+      margin-top: 3px;
       animation: pulseBtn 1.8s infinite;
     }
     @keyframes pulseBtn {
@@ -476,31 +482,120 @@
     }
     #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #ff3355; }
 
-    /* MANDATORY POPUP */
+    /* 🔥 NEW HIGH-END POPUP (100% ENGLISH VIP MODAL) */
     .overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(12px);
-      z-index: 9000; justify-content: center; align-items: center; padding: 16px;
+      background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 9000; justify-content: center; align-items: center; padding: 18px;
     }
     .overlay.active { display: flex; }
     .popup {
-      background: linear-gradient(165deg, #141724 0%, #0c0e17 100%);
-      border: 1px solid rgba(0, 168, 255, 0.4); border-radius: 18px;
-      padding: 24px 18px; width: 100%; max-width: 340px; text-align: center;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.9);
+      background: linear-gradient(165deg, #141728 0%, #0a0d18 100%);
+      border: 1.5px solid rgba(0, 168, 255, 0.45);
+      border-radius: 22px;
+      padding: 26px 20px;
+      width: 100%;
+      max-width: 370px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 136, 204, 0.25);
+      position: relative;
+      animation: popZoom 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes popZoom {
+      from { transform: scale(0.85) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .popup-badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(0, 168, 255, 0.12);
+      border: 1px solid rgba(0, 168, 255, 0.35);
+      color: var(--accent-cyan);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
     }
     .popup-icon {
-      width: 48px; height: 48px; background: linear-gradient(135deg, #0088cc, #005f99);
-      border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px; box-shadow: 0 6px 18px rgba(0, 136, 204, 0.4);
+      width: 54px;
+      height: 54px;
+      background: linear-gradient(135deg, #0088cc, #005f99);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 8px 24px rgba(0, 136, 204, 0.5);
     }
-    .popup-icon svg { width: 24px; height: 24px; fill: #fff; }
-    .popup-brand-name { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: #fff; }
-    .popup p { color: #94a3b8; font-size: 12.5px; line-height: 1.5; margin: 8px 0 16px; }
+    .popup-icon svg { width: 28px; height: 28px; fill: #fff; }
+    .popup-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .popup-title-english {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .popup-title-english span {
+      color: var(--accent-cyan);
+    }
+    .popup-desc-english {
+      color: #94a3b8;
+      font-size: 12px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .popup-perks-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .perk-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+    .perk-item i {
+      font-size: 14px;
+      color: var(--accent-mint);
+    }
     .btn-join {
-      width: 100%; padding: 12px; background: linear-gradient(135deg, #0088cc, #005f99);
-      border: none; color: #fff; border-radius: 8px; font-size: 13.5px; font-weight: 800;
-      cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #0088cc 0%, #005f99 100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      box-shadow: 0 6px 22px rgba(0, 136, 204, 0.5);
+      transition: transform 0.15s ease;
+    }
+    .btn-join:active {
+      transform: scale(0.97);
     }
   </style>
 </head>
@@ -565,7 +660,7 @@
   <!-- 4. ACTION LAYOUT WITH TACTILE BUTTONS -->
   <div class="room-actions-container">
     
-    <!-- HIGH-CTR ANIMATED TELEGRAM BUTTON (CLEAR CLICK INDICATION) -->
+    <!-- HIGH-CTR ANIMATED TELEGRAM BUTTON -->
     <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="verifyAccess()" class="vip-telegram-btn">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
@@ -589,11 +684,11 @@
       </button>
     </div>
 
-    <!-- 5. INTERACTIVE SPONSORED LOOT CARD (FULL CARD CLICKABLE) -->
+    <!-- 5. 🔥 HIGH-CONVERTING MODIFIED LOOT SECTION (FULL CARD CLICKABLE) -->
     <a href="https://t.me/+dXBfsd_sqlU1YWY1" target="_blank" class="interactive-loot-link">
       <div class="sponsor-loot-card">
         <div class="sponsor-video-side">
-          <div class="sponsor-badge-tag">90% OFF</div>
+          <div class="sponsor-badge-tag">🔥 99% GLITCH</div>
           <video id="lootVideo" autoplay muted playsinline>
             <source src="https://files.catbox.moe/ht250d.mp4" type="video/mp4">
           </video>
@@ -601,8 +696,8 @@
 
         <div class="sponsor-content-side">
           <div class="sponsor-label-row">⚡ SECRET PRICE BUGS • LIVE DROP</div>
-          <div class="sponsor-heading">Exclusive <span>Bug Loot Deals</span> & Codes!</div>
-          <div class="sponsor-social-line">👥 1,420+ Members Joined Today (100% Free)</div>
+          <div class="sponsor-heading">Grab Secret <span>Bug Deals</span> & ₹1 Loots!</div>
+          <div class="sponsor-social-line">👥 1,420+ Members Joined Today (Free VIP)</div>
           <div class="btn-claim-loot">
             Claim Loot (Free) 👉
           </div>
@@ -612,15 +707,42 @@
 
   </div>
 
-  <!-- MANDATORY POPUP -->
+  <!-- 🔥 6. REDESIGNED VIP ACCESS MODAL (ENGLISH MESSAGE) -->
   <div class="overlay" id="forcePop">
     <div class="popup">
+      <div class="popup-badge-top">
+        <i class="material-icons" style="font-size: 12px;">lock</i> VIP PASS REQUIRED
+      </div>
+
       <div class="popup-icon">
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
+
       <div class="popup-brand-name">CRICKET YODDHA</div>
-      <p>Stream bina rukawat dekhne ke liye hamara official Telegram channel join karein. Free 24h pass turant unlock hoga!</p>
-      <button class="btn-join" onclick="goTelegram()">Unlock Stream Access</button>
+      
+      <div class="popup-title-english">
+        Unlock <span>Full Stream</span> Access
+      </div>
+
+      <p class="popup-desc-english">
+        To watch all live matches uninterrupted in Ultra HD, joining our official Telegram channel is mandatory. You will receive an instant <strong>24-Hour Free Pass</strong>!
+      </p>
+
+      <div class="popup-perks-box">
+        <div class="perk-item">
+          <i class="material-icons">check_circle</i> Ultra HD 1080p Low-Latency Stream
+        </div>
+        <div class="perk-item">
+          <i class="material-icons">check_circle</i> Direct Backup Links & Commentary
+        </div>
+        <div class="perk-item">
+          <i class="material-icons">check_circle</i> 100% Free Lifetime VIP Access
+        </div>
+      </div>
+
+      <button class="btn-join" onclick="goTelegram()">
+        Join Telegram to Unlock →
+      </button>
     </div>
   </div>
 
@@ -689,7 +811,7 @@
           return;
         }
 
-        // Apply dynamic channel name and player source
+        // Apply channel name and player source
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
         document.getElementById('main-player').src = iframeSrc;
         document.getElementById('loading-screen').style.display = 'none';
