@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
-  <title>CRICKET YODDHA - VIP Cinema Live</title>
+  <title>CRICKET YODDHA - JioHotstar Live OTT</title>
   
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg: #080a12;
-      --surface: #121624;
-      --surface-border: rgba(255, 255, 255, 0.09);
-      --accent-cyan: #00a8ff;
+      --hotstar-bg: #080911;
+      --hotstar-navy: #0e1322;
+      --hotstar-card: rgba(18, 24, 42, 0.85);
+      --hotstar-border: rgba(255, 255, 255, 0.08);
+      --hotstar-blue: #146ef5;
+      --hotstar-cyan: #00d2ff;
+      --hotstar-gold: #ffb800;
+      --hotstar-live: #e50914;
       --accent-mint: #00f076;
-      --accent-flame: #ff5500;
-      --accent-gold: #ffb800;
-      --text-muted: #8c96a8;
-      --tg-blue: #0088cc;
+      --text-sub: #94a3b8;
     }
 
     * {
@@ -29,12 +30,12 @@
       padding: 0;
     }
 
+    /* OFFICIAL JIOHOTSTAR ATMOSPHERE */
     body {
-      background: var(--bg);
+      background: var(--hotstar-bg);
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 168, 255, 0.16) 0%, transparent 45%),
-        radial-gradient(circle at 100% 60%, rgba(0, 240, 118, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 0% 100%, rgba(255, 85, 0, 0.08) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% -10%, #15244a 0%, #080911 65%, #05060a 100%),
+        radial-gradient(circle at 100% 70%, rgba(20, 110, 245, 0.08) 0%, transparent 45%);
       font-family: 'Plus Jakarta Sans', sans-serif;
       color: #fff;
       padding-bottom: 25px;
@@ -43,13 +44,79 @@
       width: 100%;
     }
 
-    /* 1. CENTERED SLEEK HEADER */
+    /* 🔥 OFFICIAL JIOHOTSTAR SPLASH SCREEN (APP LAUNCH) */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background: #06070d;
+      background-image: radial-gradient(circle at 50% 40%, #132247 0%, #06070d 75%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 99999;
+      transition: opacity 0.4s ease;
+    }
+    .splash-logo-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .splash-logo-img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 0 25px rgba(20, 110, 245, 0.6));
+      animation: pulseSplash 1.8s infinite ease-in-out;
+    }
+    @keyframes pulseSplash {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(20, 110, 245, 0.4)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.8)); }
+    }
+    .splash-brand-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: #fff;
+      margin-top: 4px;
+    }
+    .splash-brand-title span { color: var(--hotstar-cyan); }
+    .splash-progress-track {
+      width: 160px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .splash-progress-bar {
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--hotstar-blue), var(--hotstar-cyan));
+      border-radius: 4px;
+      position: absolute;
+      animation: progressSweep 1.2s infinite ease-in-out;
+    }
+    @keyframes progressSweep {
+      0% { left: -45%; }
+      100% { left: 100%; }
+    }
+    .splash-status-txt {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* 1. CENTERED TOP APP BAR */
     header {
       height: 52px;
-      background: rgba(8, 10, 18, 0.9);
+      background: rgba(8, 9, 17, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--hotstar-border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -67,43 +134,44 @@
     .logo-img {
       height: 36px;
       width: auto;
-      filter: drop-shadow(0 2px 10px rgba(0, 168, 255, 0.4));
+      filter: drop-shadow(0 2px 12px rgba(20, 110, 245, 0.45));
     }
-    .header-live-chip {
+    .hotstar-live-badge {
       position: absolute;
-      right: -60px;
+      right: -62px;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 30, 66, 0.15);
-      border: 1px solid rgba(255, 30, 66, 0.5);
-      color: #ff3355;
-      font-size: 8.5px;
-      font-weight: 800;
-      padding: 2px 6px;
+      background: var(--hotstar-live);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 900;
+      padding: 2.5px 6px;
       border-radius: 4px;
+      letter-spacing: 0.6px;
       display: flex;
       align-items: center;
       gap: 4px;
+      box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
     }
     .live-pulse-dot {
-      width: 5px;
-      height: 5px;
-      background: #ff3355;
+      width: 4px;
+      height: 4px;
+      background: #fff;
       border-radius: 50%;
-      box-shadow: 0 0 6px #ff3355;
-      animation: pulse 1s infinite;
+      animation: pulseDot 0.9s infinite;
     }
-    @keyframes pulse {
+    @keyframes pulseDot {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.7); }
+      50% { opacity: 0.3; transform: scale(0.6); }
     }
 
-    /* 2. VIDEO STAGE */
+    /* 2. HOTSTAR CINEMA PLAYER CONTAINER */
     #main-stage {
       width: 100%;
       position: relative;
       background: #000;
-      border-bottom: 1px solid var(--surface-border);
+      border-bottom: 1px solid var(--hotstar-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
     }
     #main-stage.locked .video-box {
       pointer-events: none;
@@ -125,10 +193,10 @@
       left: 0;
     }
 
-    /* 3. DYNAMIC CHANNEL STRIP */
+    /* 3. MATCH & CHANNEL BROADCAST STRIP */
     .stream-room-meta {
-      background: var(--surface);
-      border-bottom: 1px solid var(--surface-border);
+      background: var(--hotstar-navy);
+      border-bottom: 1px solid var(--hotstar-border);
       padding: 10px 14px;
       display: flex;
       align-items: center;
@@ -157,14 +225,14 @@
       letter-spacing: 0.4px;
     }
     .verified-badge {
-      color: var(--accent-cyan);
+      color: var(--hotstar-cyan);
       font-size: 15px;
       display: flex;
       align-items: center;
     }
     .stream-room-sub {
       font-size: 9.5px;
-      color: var(--text-muted);
+      color: var(--text-sub);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -194,10 +262,10 @@
       background: var(--accent-mint);
       border-radius: 50%;
       box-shadow: 0 0 8px var(--accent-mint);
-      animation: pulse 1.2s infinite;
+      animation: pulseDot 1.2s infinite;
     }
 
-    /* 4. ACTIONS CONTAINER */
+    /* 4. ACTIONS & HIGH-CONVERTING TELEGRAM VIP BAR */
     .room-actions-container {
       padding: 12px 14px;
       display: flex;
@@ -208,42 +276,42 @@
       width: 100%;
     }
 
-    /* TELEGRAM BUTTON */
-    .vip-telegram-btn {
+    /* 🔥 JIOHOTSTAR VIP PASS (INSTANT 1-CLICK JOIN) */
+    .vip-telegram-pass {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
       padding: 12px 16px;
-      background: linear-gradient(135deg, #0088cc 0%, #005f99 100%);
-      border: 1.5px solid rgba(0, 168, 255, 0.5);
+      background: linear-gradient(135deg, #0f62fe 0%, #0043ce 100%);
+      border: 1.5px solid rgba(0, 210, 255, 0.5);
       border-radius: 14px;
       color: #fff;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(15, 98, 254, 0.45);
       cursor: pointer;
       position: relative;
       overflow: hidden;
       transition: transform 0.15s ease;
-      animation: breathingGlow 3s infinite alternate;
+      animation: hotstarGlow 2.5s infinite alternate;
     }
-    @keyframes breathingGlow {
-      0% { box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4); border-color: rgba(0, 168, 255, 0.4); }
-      100% { box-shadow: 0 8px 28px rgba(0, 168, 255, 0.65); border-color: rgba(0, 210, 255, 0.8); }
+    @keyframes hotstarGlow {
+      0% { box-shadow: 0 6px 20px rgba(15, 98, 254, 0.4); border-color: rgba(0, 210, 255, 0.4); }
+      100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.7); border-color: rgba(0, 210, 255, 0.9); }
     }
-    .vip-telegram-btn:active {
+    .vip-telegram-pass:active {
       transform: scale(0.96);
     }
-    .vip-telegram-btn::after {
+    .vip-telegram-pass::after {
       content: '';
       position: absolute;
       top: -50%;
       left: -60%;
       width: 35%;
       height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
       transform: rotate(25deg);
-      animation: sweepLight 2.8s infinite ease-in-out;
+      animation: sweepLight 2.6s infinite ease-in-out;
     }
     @keyframes sweepLight {
       0% { left: -60%; }
@@ -279,23 +347,23 @@
     }
     .vip-text-desc {
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(255, 255, 255, 0.9);
       font-weight: 600;
     }
     .btn-tap-pill {
       background: #fff;
-      color: #0088cc;
+      color: #0f62fe;
       font-size: 11px;
       font-weight: 900;
-      padding: 6px 12px;
+      padding: 7px 12px;
       border-radius: 8px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
       flex-shrink: 0;
       display: flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
     }
 
     /* QUICK CONTROLS */
@@ -305,8 +373,8 @@
       gap: 8px;
     }
     .interactive-btn {
-      background: var(--surface);
-      border: 1px solid var(--surface-border);
+      background: var(--hotstar-card);
+      border: 1px solid var(--hotstar-border);
       color: #e2e8f0;
       padding: 10px 14px;
       border-radius: 10px;
@@ -318,15 +386,15 @@
       gap: 6px;
       cursor: pointer;
       transition: transform 0.15s ease, background 0.15s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
-    .interactive-btn i { font-size: 16px; color: var(--accent-cyan); transition: transform 0.3s; }
+    .interactive-btn i { font-size: 16px; color: var(--hotstar-cyan); transition: transform 0.3s; }
     .interactive-btn:active {
       transform: scale(0.96);
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* 🔥 MODIFIED HIGH-CONVERTING LOOT SECTION */
+    /* 5. OFFICIAL SPONSOR LOOT CARD (CLEAR 16:9 VIDEO FRAME) */
     .interactive-loot-link {
       text-decoration: none;
       display: block;
@@ -337,93 +405,105 @@
       transform: scale(0.97);
     }
     .sponsor-loot-card {
-      background: linear-gradient(145deg, #181b2c 0%, #0d0f1a 100%);
-      border: 1.5px solid rgba(255, 184, 0, 0.5);
+      background: linear-gradient(160deg, #182038 0%, #0d1222 100%);
+      border: 1.5px solid rgba(255, 184, 0, 0.45);
       border-radius: 16px;
-      padding: 11px;
-      display: flex;
-      gap: 12px;
-      align-items: center;
+      overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 184, 0, 0.15);
       position: relative;
       cursor: pointer;
     }
-    .sponsor-video-side {
-      width: 115px;
-      height: 76px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
+    .loot-video-cinema {
+      width: 100%;
+      aspect-ratio: 16/9;
+      max-height: 155px;
       background: #000;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
     }
-    .sponsor-video-side video {
+    .loot-video-cinema video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .sponsor-badge-tag {
+    .loot-live-pill {
       position: absolute;
-      top: 4px;
-      left: 4px;
-      background: var(--accent-flame);
+      top: 8px;
+      left: 8px;
+      background: var(--hotstar-live);
       color: #fff;
-      font-size: 7.5px;
+      font-size: 8px;
       font-weight: 900;
-      padding: 2px 5px;
+      padding: 3px 7px;
       border-radius: 4px;
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    }
-    .sponsor-content-side {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      flex-grow: 1;
-      gap: 3px;
-    }
-    .sponsor-label-row {
-      font-size: 9px;
-      font-weight: 800;
-      color: var(--accent-gold);
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
       display: flex;
       align-items: center;
       gap: 4px;
+      letter-spacing: 0.6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
-    .sponsor-heading {
+    .loot-glitch-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(0, 0, 0, 0.85);
+      color: var(--hotstar-gold);
+      font-size: 8.5px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 184, 0, 0.4);
+    }
+
+    .loot-details-bar {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .loot-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      text-align: left;
+    }
+    .loot-tag-mini {
+      font-size: 8.5px;
+      color: var(--hotstar-gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    .loot-title-main {
       font-size: 13px;
       font-weight: 800;
       color: #fff;
-      line-height: 1.25;
+      line-height: 1.2;
     }
-    .sponsor-heading span { color: var(--accent-gold); }
-    .sponsor-social-line {
-      font-size: 9.5px;
+    .loot-title-main span {
+      color: var(--hotstar-gold);
+    }
+    .loot-members-count {
+      font-size: 9px;
       color: var(--accent-mint);
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 3px;
     }
     .btn-claim-loot {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-flame) 100%);
+      background: linear-gradient(135deg, var(--hotstar-gold) 0%, #ff6600 100%);
       color: #000;
-      padding: 7px 12px;
+      padding: 8px 14px;
       border-radius: 8px;
       font-size: 11px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      width: fit-content;
-      box-shadow: 0 4px 14px rgba(255, 85, 0, 0.45);
-      margin-top: 3px;
+      box-shadow: 0 4px 14px rgba(255, 102, 0, 0.45);
+      flex-shrink: 0;
       animation: pulseBtn 1.8s infinite;
     }
     @keyframes pulseBtn {
@@ -437,9 +517,9 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: rgba(18, 22, 36, 0.95);
+      background: rgba(14, 19, 34, 0.95);
       backdrop-filter: blur(14px);
-      border: 1px solid var(--accent-mint);
+      border: 1px solid var(--hotstar-cyan);
       color: #fff;
       padding: 10px 18px;
       border-radius: 30px;
@@ -458,140 +538,88 @@
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
-    .toast-icon { color: var(--accent-mint); font-size: 16px; }
+    .toast-icon { color: var(--hotstar-cyan); font-size: 16px; }
 
-    /* LOADING & ERROR SCREENS */
-    #loading-screen {
-      position: fixed; inset: 0; background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 12px; z-index: 9999;
-    }
-    .load-brand { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 4px; }
-    .load-brand span { color: var(--accent-cyan); }
-    .ring-spinner {
-      width: 32px; height: 32px; border: 3px solid rgba(255,255,255,0.1);
-      border-top-color: var(--accent-cyan); border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
+    /* ERROR SCREEN */
     #error-screen {
-      display: none; position: fixed; inset: 0; background: var(--bg);
+      display: none; position: fixed; inset: 0; background: var(--hotstar-bg);
       align-items: center; justify-content: center; flex-direction: column;
       gap: 12px; z-index: 9998; padding: 20px; text-align: center;
     }
-    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #ff3355; }
+    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--hotstar-live); }
 
-    /* 🔥 NEW HIGH-END POPUP (100% ENGLISH VIP MODAL) */
+    /* 6. COMPACT / MEDIUM-SIZE VIP POPUP (ENGLISH MESSAGE) */
     .overlay {
       display: none; position: fixed; inset: 0;
-      background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      z-index: 9000; justify-content: center; align-items: center; padding: 18px;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 9000; justify-content: center; align-items: center; padding: 16px;
     }
     .overlay.active { display: flex; }
     .popup {
-      background: linear-gradient(165deg, #141728 0%, #0a0d18 100%);
-      border: 1.5px solid rgba(0, 168, 255, 0.45);
-      border-radius: 22px;
-      padding: 26px 20px;
+      background: linear-gradient(165deg, #12182b 0%, #090c17 100%);
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      border-radius: 18px;
+      padding: 20px 18px;
       width: 100%;
-      max-width: 370px;
+      max-width: 320px; /* MEDIUM COMPACT SIZE */
       text-align: center;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 136, 204, 0.25);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
       position: relative;
-      animation: popZoom 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: popZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     @keyframes popZoom {
-      from { transform: scale(0.85) translateY(20px); opacity: 0; }
+      from { transform: scale(0.88) translateY(15px); opacity: 0; }
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
-    .popup-badge-top {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(0, 168, 255, 0.12);
-      border: 1px solid rgba(0, 168, 255, 0.35);
-      color: var(--accent-cyan);
-      font-size: 9px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      margin-bottom: 14px;
-    }
     .popup-icon {
-      width: 54px;
-      height: 54px;
-      background: linear-gradient(135deg, #0088cc, #005f99);
-      border-radius: 16px;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--hotstar-blue), #0043ce);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 14px;
-      box-shadow: 0 8px 24px rgba(0, 136, 204, 0.5);
+      margin: 0 auto 10px;
+      box-shadow: 0 6px 18px rgba(20, 110, 245, 0.45);
     }
-    .popup-icon svg { width: 28px; height: 28px; fill: #fff; }
+    .popup-icon svg { width: 22px; height: 22px; fill: #fff; }
     .popup-brand-name {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px;
-      letter-spacing: 3px;
+      font-size: 24px;
+      letter-spacing: 2px;
       color: #fff;
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .popup-title-english {
-      font-size: 15px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .popup-title-english span {
-      color: var(--accent-cyan);
+      color: var(--hotstar-cyan);
     }
     .popup-desc-english {
       color: #94a3b8;
-      font-size: 12px;
-      line-height: 1.6;
+      font-size: 11.5px;
+      line-height: 1.5;
       margin-bottom: 16px;
-    }
-    .popup-perks-box {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--surface-border);
-      border-radius: 12px;
-      padding: 10px 12px;
-      margin-bottom: 18px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .perk-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      color: #e2e8f0;
-      font-weight: 600;
-    }
-    .perk-item i {
-      font-size: 14px;
-      color: var(--accent-mint);
     }
     .btn-join {
       width: 100%;
-      padding: 13px;
-      background: linear-gradient(135deg, #0088cc 0%, #005f99 100%);
-      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 12px;
+      background: linear-gradient(135deg, var(--hotstar-blue) 0%, #0043ce 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
-      border-radius: 12px;
-      font-size: 13.5px;
+      border-radius: 10px;
+      font-size: 13px;
       font-weight: 800;
       cursor: pointer;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      box-shadow: 0 6px 22px rgba(0, 136, 204, 0.5);
+      letter-spacing: 0.6px;
+      box-shadow: 0 4px 16px rgba(20, 110, 245, 0.45);
       transition: transform 0.15s ease;
     }
     .btn-join:active {
@@ -601,17 +629,22 @@
 </head>
 <body>
 
+  <!-- 🔥 OFFICIAL JIOHOTSTAR SPLASH SCREEN (APP LAUNCH) -->
+  <div id="loading-screen">
+    <div class="splash-logo-box">
+      <img src="https://i.ibb.co/HLkW7zJV/ei-1765534270242-removebg-preview.png" alt="Logo" class="splash-logo-img">
+    </div>
+    <div class="splash-brand-title">CRICKET <span>YODDHA</span></div>
+    <div class="splash-progress-track">
+      <div class="splash-progress-bar"></div>
+    </div>
+    <div class="splash-status-txt">Starting Live Playback...</div>
+  </div>
+
   <!-- IN-APP TOAST MESSAGE POPUP -->
   <div id="toastMessage" class="app-toast">
     <i class="material-icons toast-icon">check_circle</i>
     <span id="toastText">Link copied to clipboard!</span>
-  </div>
-
-  <!-- LOADING OVERLAY -->
-  <div id="loading-screen">
-    <div class="load-brand">CRICKET <span>YODDHA</span></div>
-    <div class="ring-spinner"></div>
-    <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #64748b;">Connecting Live Room...</p>
   </div>
 
   <!-- ERROR OVERLAY -->
@@ -621,11 +654,11 @@
     <a href="javascript:location.reload()" class="btn-claim-loot" style="margin-top: 8px;">RELOAD STREAM</a>
   </div>
 
-  <!-- 1. CENTERED SLEEK HEADER -->
+  <!-- 1. CENTERED TOP APP BAR -->
   <header>
     <div class="header-logo-wrap">
       <img src="https://i.ibb.co/HLkW7zJV/ei-1765534270242-removebg-preview.png" alt="Cricket Yoddha" class="logo-img">
-      <div class="header-live-chip">
+      <div class="hotstar-live-badge">
         <div class="live-pulse-dot"></div> LIVE
       </div>
     </div>
@@ -657,24 +690,24 @@
     </div>
   </div>
 
-  <!-- 4. ACTION LAYOUT WITH TACTILE BUTTONS -->
+  <!-- 4. ACTION LAYOUT (JIOHOTSTAR VIP PASS) -->
   <div class="room-actions-container">
     
-    <!-- HIGH-CTR ANIMATED TELEGRAM BUTTON -->
-    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="verifyAccess()" class="vip-telegram-btn">
+    <!-- 🔥 JIOHOTSTAR 1-CLICK INSTANT TELEGRAM JOIN PASS -->
+    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="verifyAccess()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
         </div>
         <div class="vip-text-box">
           <div class="vip-text-title">Join Official Telegram</div>
-          <div class="vip-text-desc">Backup stream links & continuous match access pass</div>
+          <div class="vip-text-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
         </div>
       </div>
       <div class="btn-tap-pill">TAP HERE 👉</div>
     </a>
 
-    <!-- QUICK UTILITY CONTROLS WITH REAL FEEDBACK -->
+    <!-- QUICK UTILITY CONTROLS -->
     <div class="controls-grid">
       <button onclick="handleReload(this)" class="interactive-btn">
         <i class="material-icons" id="reloadIcon">refresh</i> Reload Stream
@@ -684,22 +717,28 @@
       </button>
     </div>
 
-    <!-- 5. 🔥 HIGH-CONVERTING MODIFIED LOOT SECTION (FULL CARD CLICKABLE) -->
+    <!-- 5. OFFICIAL SPONSOR LOOT CARD -->
     <a href="https://t.me/+dXBfsd_sqlU1YWY1" target="_blank" class="interactive-loot-link">
       <div class="sponsor-loot-card">
-        <div class="sponsor-video-side">
-          <div class="sponsor-badge-tag">🔥 99% GLITCH</div>
+        <div class="loot-video-cinema">
+          <div class="loot-live-pill">
+            <span style="width:4px;height:4px;background:#fff;border-radius:50%;display:inline-block;"></span> LIVE LOOT
+          </div>
+          <div class="loot-glitch-tag">🔥 99% PRICE GLITCH</div>
           <video id="lootVideo" autoplay muted playsinline>
             <source src="https://files.catbox.moe/ht250d.mp4" type="video/mp4">
           </video>
         </div>
 
-        <div class="sponsor-content-side">
-          <div class="sponsor-label-row">⚡ SECRET PRICE BUGS • LIVE DROP</div>
-          <div class="sponsor-heading">Grab Secret <span>Bug Deals</span> & ₹1 Loots!</div>
-          <div class="sponsor-social-line">👥 1,420+ Members Joined Today (Free VIP)</div>
+        <div class="loot-details-bar">
+          <div class="loot-text-group">
+            <span class="loot-tag-mini">⚡ FLASH DROP • FREE ENTRY</span>
+            <div class="loot-title-main">Secret <span>Bug Loots</span> & Deals</div>
+            <span class="loot-members-count">👥 1,420+ Members Joined Today</span>
+          </div>
+
           <div class="btn-claim-loot">
-            Claim Loot (Free) 👉
+            Claim 👉
           </div>
         </div>
       </div>
@@ -707,13 +746,9 @@
 
   </div>
 
-  <!-- 🔥 6. REDESIGNED VIP ACCESS MODAL (ENGLISH MESSAGE) -->
+  <!-- 6. COMPACT / MEDIUM-SIZE VIP POPUP (ENGLISH MESSAGE) -->
   <div class="overlay" id="forcePop">
     <div class="popup">
-      <div class="popup-badge-top">
-        <i class="material-icons" style="font-size: 12px;">lock</i> VIP PASS REQUIRED
-      </div>
-
       <div class="popup-icon">
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
@@ -725,20 +760,8 @@
       </div>
 
       <p class="popup-desc-english">
-        To watch all live matches uninterrupted in Ultra HD, joining our official Telegram channel is mandatory. You will receive an instant <strong>24-Hour Free Pass</strong>!
+        Join our official Telegram channel to unlock 24-hour uninterrupted HD access to this live match.
       </p>
-
-      <div class="popup-perks-box">
-        <div class="perk-item">
-          <i class="material-icons">check_circle</i> Ultra HD 1080p Low-Latency Stream
-        </div>
-        <div class="perk-item">
-          <i class="material-icons">check_circle</i> Direct Backup Links & Commentary
-        </div>
-        <div class="perk-item">
-          <i class="material-icons">check_circle</i> 100% Free Lifetime VIP Access
-        </div>
-      </div>
 
       <button class="btn-join" onclick="goTelegram()">
         Join Telegram to Unlock →
@@ -814,7 +837,11 @@
         // Apply channel name and player source
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
         document.getElementById('main-player').src = iframeSrc;
-        document.getElementById('loading-screen').style.display = 'none';
+        
+        // Smooth fade out of Hotstar splash screen
+        const splash = document.getElementById('loading-screen');
+        splash.style.opacity = '0';
+        setTimeout(() => { splash.style.display = 'none'; }, 400);
 
       } catch (e) {
         showError("Failed to fetch stream details.");
