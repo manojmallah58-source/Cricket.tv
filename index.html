@@ -5,21 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <title>CRICKET YODDHA - JioHotstar Live OTT</title>
   
+  <!-- Google Fonts & Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
+    /* ========================================================
+       1. JIOHOTSTAR OTT THEME & DESIGN TOKENS
+       ======================================================== */
     :root {
-      --hotstar-bg: #080911;
-      --hotstar-navy: #0e1322;
-      --hotstar-card: rgba(18, 24, 42, 0.85);
+      --hotstar-bg: #060811;
+      --hotstar-navy: #0b1120;
+      --hotstar-surface: rgba(14, 21, 38, 0.72);
+      --hotstar-card: rgba(16, 24, 48, 0.65);
       --hotstar-border: rgba(255, 255, 255, 0.08);
-      --hotstar-blue: #146ef5;
+      --hotstar-border-glow: rgba(0, 210, 255, 0.28);
+      --hotstar-blue: #0f62fe;
+      --hotstar-royal: #146ef5;
       --hotstar-cyan: #00d2ff;
       --hotstar-gold: #ffb800;
       --hotstar-live: #e50914;
       --accent-mint: #00f076;
+      --text-main: #f8fafc;
       --text-sub: #94a3b8;
+      --glass-blur: blur(18px);
+      --app-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
     }
 
     * {
@@ -30,92 +40,111 @@
       padding: 0;
     }
 
-    /* OFFICIAL JIOHOTSTAR ATMOSPHERE */
     body {
       background: var(--hotstar-bg);
       background-image: 
-        radial-gradient(ellipse at 50% -10%, #15244a 0%, #080911 65%, #05060a 100%),
-        radial-gradient(circle at 100% 70%, rgba(20, 110, 245, 0.08) 0%, transparent 45%);
+        radial-gradient(ellipse at 50% -15%, #182852 0%, #060811 65%, #04050a 100%),
+        radial-gradient(circle at 100% 65%, rgba(20, 110, 245, 0.1) 0%, transparent 45%);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #fff;
-      padding-bottom: 25px;
+      color: var(--text-main);
+      padding-bottom: 95px; /* Room for sticky bottom loot banner */
       overflow-x: hidden;
       min-height: 100vh;
       width: 100%;
     }
 
-    /* 🔥 OFFICIAL JIOHOTSTAR SPLASH SCREEN (APP LAUNCH) */
+    /* ========================================================
+       2. OFFICIAL JIOHOTSTAR SPLASH SCREEN (APP LAUNCH)
+       ======================================================== */
     #loading-screen {
       position: fixed;
       inset: 0;
-      background: #06070d;
-      background-image: radial-gradient(circle at 50% 40%, #132247 0%, #06070d 75%);
+      background: #05070f;
+      background-image: 
+        radial-gradient(circle at 50% 38%, #14244d 0%, #070a16 65%, #030408 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       z-index: 99999;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.45s ease, visibility 0.45s;
     }
-    .splash-logo-box {
+    .splash-logo-container {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
+    .splash-glow-halo {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      background: radial-gradient(circle, rgba(0, 210, 255, 0.35) 0%, transparent 70%);
+      filter: blur(12px);
+      animation: splashAura 2.2s infinite ease-in-out;
+    }
     .splash-logo-img {
-      height: 52px;
+      height: 58px;
       width: auto;
-      filter: drop-shadow(0 0 25px rgba(20, 110, 245, 0.6));
-      animation: pulseSplash 1.8s infinite ease-in-out;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 25px rgba(20, 110, 245, 0.7));
+      animation: pulseSplash 2s infinite ease-in-out;
+    }
+    @keyframes splashAura {
+      0%, 100% { transform: scale(0.9); opacity: 0.5; }
+      50% { transform: scale(1.3); opacity: 0.9; }
     }
     @keyframes pulseSplash {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(20, 110, 245, 0.4)); }
-      50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.8)); }
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(20, 110, 245, 0.5)); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.9)); }
     }
     .splash-brand-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 4px;
+      font-size: 34px;
+      letter-spacing: 4.5px;
       color: #fff;
-      margin-top: 4px;
+      margin-top: -2px;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.8);
     }
     .splash-brand-title span { color: var(--hotstar-cyan); }
     .splash-progress-track {
-      width: 160px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
+      width: 170px;
+      height: 3.5px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
       overflow: hidden;
       position: relative;
     }
     .splash-progress-bar {
-      width: 45%;
+      width: 50%;
       height: 100%;
-      background: linear-gradient(90deg, var(--hotstar-blue), var(--hotstar-cyan));
-      border-radius: 4px;
+      background: linear-gradient(90deg, var(--hotstar-royal), var(--hotstar-cyan));
+      border-radius: 6px;
       position: absolute;
-      animation: progressSweep 1.2s infinite ease-in-out;
+      animation: progressSweep 1.1s infinite ease-in-out;
     }
     @keyframes progressSweep {
-      0% { left: -45%; }
+      0% { left: -50%; }
       100% { left: 100%; }
     }
     .splash-status-txt {
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 10.5px;
+      font-weight: 800;
       color: var(--text-sub);
-      letter-spacing: 2px;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
     }
 
-    /* 1. CENTERED TOP APP BAR */
+    /* ========================================================
+       3. TOP APP BAR (HEADER)
+       ======================================================== */
     header {
       height: 52px;
-      background: rgba(8, 9, 17, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(8, 12, 23, 0.88);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid var(--hotstar-border);
       display: flex;
       align-items: center;
@@ -132,26 +161,26 @@
       position: relative;
     }
     .logo-img {
-      height: 36px;
+      height: 35px;
       width: auto;
-      filter: drop-shadow(0 2px 12px rgba(20, 110, 245, 0.45));
+      filter: drop-shadow(0 2px 10px rgba(20, 110, 245, 0.45));
     }
     .hotstar-live-badge {
       position: absolute;
       right: -62px;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--hotstar-live);
+      background: linear-gradient(135deg, #e50914, #c0040e);
       color: #fff;
       font-size: 8px;
       font-weight: 900;
-      padding: 2.5px 6px;
+      padding: 2.5px 6.5px;
       border-radius: 4px;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.8px;
       display: flex;
       align-items: center;
       gap: 4px;
-      box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
+      box-shadow: 0 2px 10px rgba(229, 9, 20, 0.5);
     }
     .live-pulse-dot {
       width: 4px;
@@ -165,13 +194,15 @@
       50% { opacity: 0.3; transform: scale(0.6); }
     }
 
-    /* 2. HOTSTAR CINEMA PLAYER CONTAINER */
+    /* ========================================================
+       4. VIDEO STAGE & PLAYER
+       ======================================================== */
     #main-stage {
       width: 100%;
       position: relative;
       background: #000;
       border-bottom: 1px solid var(--hotstar-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
     }
     #main-stage.locked .video-box {
       pointer-events: none;
@@ -193,9 +224,13 @@
       left: 0;
     }
 
-    /* 3. MATCH & CHANNEL BROADCAST STRIP */
+    /* ========================================================
+       5. STREAM META STRIP (GLASSMORPHIC)
+       ======================================================== */
     .stream-room-meta {
-      background: var(--hotstar-navy);
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid var(--hotstar-border);
       padding: 10px 14px;
       display: flex;
@@ -235,9 +270,8 @@
       color: var(--text-sub);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
     }
-
     .stream-room-right {
       display: flex;
       align-items: center;
@@ -245,7 +279,7 @@
     }
     .live-watcher-badge {
       background: rgba(0, 240, 118, 0.08);
-      border: 1px solid rgba(0, 240, 118, 0.25);
+      border: 1px solid rgba(0, 240, 118, 0.28);
       padding: 4px 10px;
       border-radius: 20px;
       font-family: 'Chakra Petch', sans-serif;
@@ -255,6 +289,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      box-shadow: 0 0 14px rgba(0, 240, 118, 0.12);
     }
     .watcher-dot {
       width: 6px;
@@ -265,18 +300,19 @@
       animation: pulseDot 1.2s infinite;
     }
 
-    /* 4. ACTIONS & HIGH-CONVERTING TELEGRAM VIP BAR */
+    /* ========================================================
+       6. ACTIONS LAYOUT & VIP TELEGRAM BAR
+       ======================================================== */
     .room-actions-container {
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       max-width: 520px;
       margin: 0 auto;
       width: 100%;
     }
 
-    /* 🔥 JIOHOTSTAR VIP PASS (INSTANT 1-CLICK JOIN) */
     .vip-telegram-pass {
       display: flex;
       align-items: center;
@@ -284,11 +320,11 @@
       width: 100%;
       padding: 12px 16px;
       background: linear-gradient(135deg, #0f62fe 0%, #0043ce 100%);
-      border: 1.5px solid rgba(0, 210, 255, 0.5);
+      border: 1.5px solid rgba(0, 210, 255, 0.55);
       border-radius: 14px;
       color: #fff;
       text-decoration: none;
-      box-shadow: 0 8px 24px rgba(15, 98, 254, 0.45);
+      box-shadow: 0 8px 25px rgba(15, 98, 254, 0.45);
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -297,11 +333,9 @@
     }
     @keyframes hotstarGlow {
       0% { box-shadow: 0 6px 20px rgba(15, 98, 254, 0.4); border-color: rgba(0, 210, 255, 0.4); }
-      100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.7); border-color: rgba(0, 210, 255, 0.9); }
+      100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.75); border-color: rgba(0, 210, 255, 0.95); }
     }
-    .vip-telegram-pass:active {
-      transform: scale(0.96);
-    }
+    .vip-telegram-pass:active { transform: scale(0.97); }
     .vip-telegram-pass::after {
       content: '';
       position: absolute;
@@ -325,12 +359,13 @@
     .vip-icon-wrap {
       width: 38px;
       height: 38px;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.18);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      backdrop-filter: blur(8px);
     }
     .vip-icon-wrap svg { width: 22px; height: 22px; fill: #fff; }
     .vip-text-box {
@@ -361,12 +396,9 @@
       text-transform: uppercase;
       box-shadow: 0 3px 10px rgba(0,0,0,0.3);
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 4px;
     }
 
-    /* QUICK CONTROLS */
+    /* CONTROLS GRID */
     .controls-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -374,10 +406,12 @@
     }
     .interactive-btn {
       background: var(--hotstar-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
       border: 1px solid var(--hotstar-border);
       color: #e2e8f0;
       padding: 10px 14px;
-      border-radius: 10px;
+      border-radius: 11px;
       font-size: 12px;
       font-weight: 700;
       display: flex;
@@ -385,38 +419,43 @@
       justify-content: center;
       gap: 6px;
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      transition: all 0.15s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     }
-    .interactive-btn i { font-size: 16px; color: var(--hotstar-cyan); transition: transform 0.3s; }
+    .interactive-btn i { font-size: 16px; color: var(--hotstar-cyan); }
     .interactive-btn:active {
       transform: scale(0.96);
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
     }
 
-    /* 5. OFFICIAL SPONSOR LOOT CARD (CLEAR 16:9 VIDEO FRAME) */
+    /* ========================================================
+       7. OPTIMIZED SPONSOR LOOT CARD (COMPACT & LOWER PLACED)
+       ======================================================== */
     .interactive-loot-link {
       text-decoration: none;
       display: block;
-      border-radius: 16px;
+      margin-top: 4px;
+      border-radius: 14px;
       transition: transform 0.15s ease;
     }
     .interactive-loot-link:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
     .sponsor-loot-card {
-      background: linear-gradient(160deg, #182038 0%, #0d1222 100%);
-      border: 1.5px solid rgba(255, 184, 0, 0.45);
-      border-radius: 16px;
+      background: linear-gradient(160deg, rgba(20, 28, 52, 0.85) 0%, rgba(10, 15, 28, 0.95) 100%);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid rgba(255, 184, 0, 0.4);
+      border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 184, 0, 0.15);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 18px rgba(255, 184, 0, 0.1);
       position: relative;
-      cursor: pointer;
     }
+
+    /* Compact 16:9 Video Frame */
     .loot-video-cinema {
       width: 100%;
-      aspect-ratio: 16/9;
-      max-height: 155px;
+      height: 115px; /* Compact height as requested */
       background: #000;
       position: relative;
       overflow: hidden;
@@ -426,38 +465,64 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      filter: brightness(0.95);
     }
     .loot-live-pill {
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: 7px;
+      left: 7px;
       background: var(--hotstar-live);
       color: #fff;
-      font-size: 8px;
+      font-size: 7.5px;
       font-weight: 900;
-      padding: 3px 7px;
+      padding: 2.5px 6.5px;
       border-radius: 4px;
       display: flex;
       align-items: center;
       gap: 4px;
       letter-spacing: 0.6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      z-index: 2;
     }
     .loot-glitch-tag {
       position: absolute;
-      bottom: 8px;
-      right: 8px;
+      bottom: 7px;
+      right: 7px;
       background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
       color: var(--hotstar-gold);
-      font-size: 8.5px;
+      font-size: 8px;
       font-weight: 800;
-      padding: 3px 8px;
+      padding: 2.5px 7px;
       border-radius: 4px;
       border: 1px solid rgba(255, 184, 0, 0.4);
+      z-index: 2;
+    }
+
+    /* Urgency Live Ticker inside Loot Card */
+    .loot-urgency-strip {
+      background: rgba(255, 184, 0, 0.12);
+      border-bottom: 1px solid rgba(255, 184, 0, 0.2);
+      padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 9.5px;
+      font-weight: 800;
+      color: var(--hotstar-gold);
+    }
+    .loot-urgency-strip .timer-badge {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5px 6px;
+      border-radius: 4px;
+      color: #fff;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.5px;
     }
 
     .loot-details-bar {
-      padding: 10px 14px;
+      padding: 9px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -470,14 +535,14 @@
       text-align: left;
     }
     .loot-tag-mini {
-      font-size: 8.5px;
+      font-size: 8px;
       color: var(--hotstar-gold);
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.6px;
     }
     .loot-title-main {
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       color: #fff;
       line-height: 1.2;
@@ -486,7 +551,7 @@
       color: var(--hotstar-gold);
     }
     .loot-members-count {
-      font-size: 9px;
+      font-size: 8.5px;
       color: var(--accent-mint);
       font-weight: 700;
     }
@@ -496,13 +561,13 @@
       justify-content: center;
       background: linear-gradient(135deg, var(--hotstar-gold) 0%, #ff6600 100%);
       color: #000;
-      padding: 8px 14px;
+      padding: 7px 13px;
       border-radius: 8px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      box-shadow: 0 4px 14px rgba(255, 102, 0, 0.45);
+      box-shadow: 0 4px 14px rgba(255, 102, 0, 0.4);
       flex-shrink: 0;
       animation: pulseBtn 1.8s infinite;
     }
@@ -511,70 +576,168 @@
       50% { transform: scale(1.04); }
     }
 
-    /* IN-APP TOAST NOTIFICATION */
-    .app-toast {
+    /* ========================================================
+       8. SOCIAL PROOF LIVE TICKER (FOMO BAR)
+       ======================================================== */
+    .fomo-social-ticker {
       position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: rgba(14, 19, 34, 0.95);
+      top: 60px;
+      left: 14px;
+      z-index: 5000;
+      background: rgba(14, 21, 38, 0.94);
       backdrop-filter: blur(14px);
-      border: 1px solid var(--hotstar-cyan);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 30px;
-      font-size: 12px;
-      font-weight: 800;
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 210, 255, 0.35);
+      border-radius: 24px;
+      padding: 6px 14px 6px 8px;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-      z-index: 99999;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transform: translateY(-90px);
       opacity: 0;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       pointer-events: none;
+      max-width: 90%;
     }
-    .app-toast.active {
-      transform: translateX(-50%) translateY(0);
+    .fomo-social-ticker.show {
+      transform: translateY(0);
       opacity: 1;
     }
-    .toast-icon { color: var(--hotstar-cyan); font-size: 16px; }
-
-    /* ERROR SCREEN */
-    #error-screen {
-      display: none; position: fixed; inset: 0; background: var(--hotstar-bg);
-      align-items: center; justify-content: center; flex-direction: column;
-      gap: 12px; z-index: 9998; padding: 20px; text-align: center;
+    .fomo-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--hotstar-blue), var(--hotstar-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #fff;
+      font-weight: 800;
     }
-    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--hotstar-live); }
+    .fomo-text-wrap {
+      display: flex;
+      flex-direction: column;
+      font-size: 9.5px;
+      line-height: 1.25;
+      color: #cbd5e1;
+    }
+    .fomo-text-wrap b {
+      color: #fff;
+    }
+    .fomo-text-wrap span {
+      color: var(--accent-mint);
+      font-weight: 700;
+    }
 
-    /* 6. COMPACT / MEDIUM-SIZE VIP POPUP (ENGLISH MESSAGE) */
+    /* ========================================================
+       9. STICKY BOTTOM LOOT BANNER (HIGH CONVERTING)
+       ======================================================== */
+    .sticky-loot-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(8, 12, 23, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(0, 210, 255, 0.35);
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.8);
+      z-index: 8500;
+      padding: 8px 14px calc(8px + env(safe-area-inset-bottom, 0px));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .dock-left-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .dock-fire-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, rgba(255, 184, 0, 0.25), rgba(255, 102, 0, 0.25));
+      border: 1px solid rgba(255, 184, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .dock-text-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .dock-badge-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .dock-badge-title span {
+      color: var(--hotstar-gold);
+    }
+    .dock-subtitle {
+      font-size: 8.5px;
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+    .dock-btn-loot {
+      background: linear-gradient(135deg, var(--hotstar-gold) 0%, #ff5500 100%);
+      color: #000;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      box-shadow: 0 4px 14px rgba(255, 102, 0, 0.5);
+      flex-shrink: 0;
+      animation: pulseBtn 1.8s infinite;
+    }
+
+    /* ========================================================
+       10. POPUP MODALS (HOTSTAR GLASSMORPHIC STYLING)
+       ======================================================== */
     .overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 9000; justify-content: center; align-items: center; padding: 16px;
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 9000;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
     }
     .overlay.active { display: flex; }
+
     .popup {
-      background: linear-gradient(165deg, #12182b 0%, #090c17 100%);
-      border: 1px solid rgba(0, 210, 255, 0.4);
-      border-radius: 18px;
-      padding: 20px 18px;
+      background: linear-gradient(165deg, rgba(20, 27, 48, 0.95) 0%, rgba(9, 13, 24, 0.98) 100%);
+      border: 1px solid rgba(0, 210, 255, 0.45);
+      border-radius: 20px;
+      padding: 22px 18px;
       width: 100%;
-      max-width: 320px; /* MEDIUM COMPACT SIZE */
+      max-width: 320px;
       text-align: center;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 210, 255, 0.15);
       position: relative;
       animation: popZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     @keyframes popZoom {
-      from { transform: scale(0.88) translateY(15px); opacity: 0; }
+      from { transform: scale(0.85) translateY(20px); opacity: 0; }
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
     .popup-icon {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       background: linear-gradient(135deg, var(--hotstar-blue), #0043ce);
       border-radius: 12px;
       display: flex;
@@ -587,7 +750,7 @@
     .popup-brand-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 24px;
-      letter-spacing: 2px;
+      letter-spacing: 2.2px;
       color: #fff;
       line-height: 1;
       margin-bottom: 6px;
@@ -598,9 +761,7 @@
       color: #fff;
       margin-bottom: 6px;
     }
-    .popup-title-english span {
-      color: var(--hotstar-cyan);
-    }
+    .popup-title-english span { color: var(--hotstar-cyan); }
     .popup-desc-english {
       color: #94a3b8;
       font-size: 11.5px;
@@ -622,28 +783,132 @@
       box-shadow: 0 4px 16px rgba(20, 110, 245, 0.45);
       transition: transform 0.15s ease;
     }
-    .btn-join:active {
-      transform: scale(0.97);
+    .btn-join:active { transform: scale(0.97); }
+
+    /* ========================================================
+       11. 60-SECONDS TIMED LOOT POP-UP
+       ======================================================== */
+    .popup-loot-badge {
+      display: inline-block;
+      background: rgba(255, 184, 0, 0.15);
+      border: 1px solid rgba(255, 184, 0, 0.4);
+      color: var(--hotstar-gold);
+      font-size: 9px;
+      font-weight: 900;
+      padding: 3px 9px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
     }
+    .loot-pop-actions-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+    .btn-excited {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--hotstar-gold) 0%, #ff5500 100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #000;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      box-shadow: 0 6px 18px rgba(255, 102, 0, 0.45);
+      transition: transform 0.15s ease;
+    }
+    .btn-excited:active { transform: scale(0.97); }
+    .btn-not-excited {
+      width: 100%;
+      padding: 9px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.15s ease;
+    }
+    .btn-not-excited:active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* IN-APP TOAST */
+    .app-toast {
+      position: fixed;
+      bottom: 85px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(14, 19, 34, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--hotstar-cyan);
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 30px;
+      font-size: 11.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      z-index: 99999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+    .app-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ERROR SCREEN */
+    #error-screen {
+      display: none; position: fixed; inset: 0; background: var(--hotstar-bg);
+      align-items: center; justify-content: center; flex-direction: column;
+      gap: 12px; z-index: 9998; padding: 20px; text-align: center;
+    }
+    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--hotstar-live); }
   </style>
 </head>
 <body>
 
-  <!-- 🔥 OFFICIAL JIOHOTSTAR SPLASH SCREEN (APP LAUNCH) -->
+  <!-- ========================================================
+       1. OFFICIAL JIOHOTSTAR SPLASH SCREEN (LAUNCH)
+       ======================================================== -->
   <div id="loading-screen">
-    <div class="splash-logo-box">
+    <div class="splash-logo-container">
+      <div class="splash-glow-halo"></div>
       <img src="https://i.ibb.co/HLkW7zJV/ei-1765534270242-removebg-preview.png" alt="Logo" class="splash-logo-img">
     </div>
     <div class="splash-brand-title">CRICKET <span>YODDHA</span></div>
     <div class="splash-progress-track">
       <div class="splash-progress-bar"></div>
     </div>
-    <div class="splash-status-txt">Starting Live Playback...</div>
+    <div class="splash-status-txt">Connecting JioHotstar Feed...</div>
   </div>
 
-  <!-- IN-APP TOAST MESSAGE POPUP -->
+  <!-- SOCIAL PROOF LIVE TICKER (FOMO) -->
+  <div id="fomoTicker" class="fomo-social-ticker">
+    <div class="fomo-avatar" id="fomoAvatar">R</div>
+    <div class="fomo-text-wrap">
+      <b id="fomoName">Rahul (Mumbai)</b>
+      <span>Claimed ₹1 Loot Deal! 🔥</span>
+    </div>
+  </div>
+
+  <!-- IN-APP TOAST NOTIFICATION -->
   <div id="toastMessage" class="app-toast">
-    <i class="material-icons toast-icon">check_circle</i>
+    <i class="material-icons" style="color: var(--hotstar-cyan); font-size: 16px;">check_circle</i>
     <span id="toastText">Link copied to clipboard!</span>
   </div>
 
@@ -654,7 +919,9 @@
     <a href="javascript:location.reload()" class="btn-claim-loot" style="margin-top: 8px;">RELOAD STREAM</a>
   </div>
 
-  <!-- 1. CENTERED TOP APP BAR -->
+  <!-- ========================================================
+       2. TOP APP BAR
+       ======================================================== -->
   <header>
     <div class="header-logo-wrap">
       <img src="https://i.ibb.co/HLkW7zJV/ei-1765534270242-removebg-preview.png" alt="Cricket Yoddha" class="logo-img">
@@ -664,18 +931,19 @@
     </div>
   </header>
 
-  <!-- 2. MAIN PLAYER -->
+  <!-- ========================================================
+       3. MAIN VIDEO STAGE
+       ======================================================== -->
   <div id="main-stage">
     <div class="video-box">
       <iframe id="main-player" allowfullscreen="true" scrolling="no" allow="autoplay; encrypted-media"></iframe>
     </div>
   </div>
 
-  <!-- 3. LIVE STREAM ROOM INFO STRIP (DYNAMIC VIA JSON) -->
+  <!-- STREAM ROOM META STRIP -->
   <div class="stream-room-meta">
     <div class="stream-room-left">
       <div class="channel-header-row">
-        <!-- DYNAMIC CHANNEL NAME INSERTED HERE -->
         <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
         <span class="verified-badge"><i class="material-icons" style="font-size: 15px;">verified</i></span>
       </div>
@@ -690,10 +958,12 @@
     </div>
   </div>
 
-  <!-- 4. ACTION LAYOUT (JIOHOTSTAR VIP PASS) -->
+  <!-- ========================================================
+       4. ACTIONS & LOOT SECTION
+       ======================================================== -->
   <div class="room-actions-container">
     
-    <!-- 🔥 JIOHOTSTAR 1-CLICK INSTANT TELEGRAM JOIN PASS -->
+    <!-- VIP TELEGRAM 1-CLICK PASS -->
     <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="verifyAccess()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
@@ -709,7 +979,7 @@
 
     <!-- QUICK UTILITY CONTROLS -->
     <div class="controls-grid">
-      <button onclick="handleReload(this)" class="interactive-btn">
+      <button onclick="handleReload()" class="interactive-btn">
         <i class="material-icons" id="reloadIcon">refresh</i> Reload Stream
       </button>
       <button onclick="handleShare()" class="interactive-btn">
@@ -717,15 +987,23 @@
       </button>
     </div>
 
-    <!-- 5. OFFICIAL SPONSOR LOOT CARD -->
+    <!-- COMPACT & LOWER PLACED OFFICIAL SPONSOR LOOT CARD -->
     <a href="https://t.me/+dXBfsd_sqlU1YWY1" target="_blank" class="interactive-loot-link">
       <div class="sponsor-loot-card">
+        
+        <!-- Live Urgency Countdown Bar -->
+        <div class="loot-urgency-strip">
+          <span>⚡ LIMITED LOOT DROP • EXPIRES IN</span>
+          <span class="timer-badge" id="lootTimer">04:59</span>
+        </div>
+
+        <!-- Optimized Compact Video Frame -->
         <div class="loot-video-cinema">
           <div class="loot-live-pill">
             <span style="width:4px;height:4px;background:#fff;border-radius:50%;display:inline-block;"></span> LIVE LOOT
           </div>
           <div class="loot-glitch-tag">🔥 99% PRICE GLITCH</div>
-          <video id="lootVideo" autoplay muted playsinline>
+          <video id="lootVideo" autoplay muted playsinline loop>
             <source src="https://files.catbox.moe/ht250d.mp4" type="video/mp4">
           </video>
         </div>
@@ -734,7 +1012,7 @@
           <div class="loot-text-group">
             <span class="loot-tag-mini">⚡ FLASH DROP • FREE ENTRY</span>
             <div class="loot-title-main">Secret <span>Bug Loots</span> & Deals</div>
-            <span class="loot-members-count">👥 1,420+ Members Joined Today</span>
+            <span class="loot-members-count">👥 2,420+ Members Joined Today</span>
           </div>
 
           <div class="btn-claim-loot">
@@ -746,7 +1024,25 @@
 
   </div>
 
-  <!-- 6. COMPACT / MEDIUM-SIZE VIP POPUP (ENGLISH MESSAGE) -->
+  <!-- ========================================================
+       5. STICKY BOTTOM LOOT DOCK (HIGH ENGAGEMENT)
+       ======================================================== -->
+  <div class="sticky-loot-dock">
+    <div class="dock-left-content">
+      <div class="dock-fire-icon">🔥</div>
+      <div class="dock-text-col">
+        <div class="dock-badge-title">99% Price <span>Glitch Deals</span></div>
+        <div class="dock-subtitle">Free Shopping & Loot Deals Channel</div>
+      </div>
+    </div>
+    <a href="https://t.me/+dXBfsd_sqlU1YWY1" target="_blank" class="dock-btn-loot">
+      JOIN LOOT 👉
+    </a>
+  </div>
+
+  <!-- ========================================================
+       6. ORIGINAL UNLOCK POP-UP (PRESERVED AS IS)
+       ======================================================== -->
   <div class="overlay" id="forcePop">
     <div class="popup">
       <div class="popup-icon">
@@ -769,14 +1065,55 @@
     </div>
   </div>
 
-  <!-- SCRIPTS & INTEGRATION -->
+  <!-- ========================================================
+       7. 60-SECONDS TIMED LOOT POP-UP
+       ======================================================== -->
+  <div class="overlay" id="timedLootPop">
+    <div class="popup" style="border-color: rgba(255, 184, 0, 0.5); box-shadow: 0 25px 60px rgba(0,0,0,0.95), 0 0 35px rgba(255, 184, 0, 0.2);">
+      
+      <div class="popup-loot-badge">🎁 Special Match Drop</div>
+      
+      <div class="popup-brand-name">EXCLUSIVE <span>LOOT DEAL</span></div>
+      
+      <div class="popup-title-english" style="font-size: 13px;">
+        Are you excited for <span>99% Bug Loots</span>?
+      </div>
+
+      <p class="popup-desc-english" style="font-size: 11px; margin-bottom: 14px;">
+        Join our VIP Loot Channel right now to access secret price errors, ₹0 shopping glitches, and daily gift card drops!
+      </p>
+
+      <div class="loot-pop-actions-row">
+        <!-- Button (a): I am Excited -->
+        <button class="btn-excited" onclick="handleExcitedLoot()">
+          I AM EXCITED 🔥
+        </button>
+
+        <!-- Button (b): Not Excited -->
+        <button class="btn-not-excited" onclick="handleNotExcitedLoot()">
+          Not Excited ✕
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       FIREBASE & LOGIC INTEGRATION
+       ======================================================== -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
   <script>
-    const CONFIG = { key: "yoddha_access_v12", timeKey: "yoddha_time_v12", preview: 5000, expiry: 86400000 };
+    const CONFIG = { 
+      key: "yoddha_access_v12", 
+      timeKey: "yoddha_time_v12", 
+      preview: 5000, 
+      expiry: 86400000,
+      lootDelay: 60000 // 60 Seconds Timed Pop-up Delay
+    };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
+    const LOOT_CHANNEL_LINK = "https://t.me/+dXBfsd_sqlU1YWY1";
 
     window.onload = () => {
       const lastJoin = localStorage.getItem(CONFIG.timeKey);
@@ -792,8 +1129,12 @@
       }
       
       loadStream();
+      startLootCountdown();
+      initSocialProofTicker();
+      initTimedLootPopup();
     };
 
+    // 1. STREAM LOADER (DYNAMIC VIA JSON)
     async function loadStream() {
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
@@ -811,7 +1152,6 @@
         let iframeSrc = "";
         let channelTitle = id.replace(/[-_]/g, ' ').toUpperCase();
 
-        // Extract channel name and source dynamically from JSON
         if (data.iframes) {
           const found = data.iframes.find(x => x.id === id);
           if (found) {
@@ -834,14 +1174,13 @@
           return;
         }
 
-        // Apply channel name and player source
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
         document.getElementById('main-player').src = iframeSrc;
         
-        // Smooth fade out of Hotstar splash screen
+        // Premium fade out of splash screen
         const splash = document.getElementById('loading-screen');
         splash.style.opacity = '0';
-        setTimeout(() => { splash.style.display = 'none'; }, 400);
+        setTimeout(() => { splash.style.display = 'none'; }, 450);
 
       } catch (e) {
         showError("Failed to fetch stream details.");
@@ -855,6 +1194,7 @@
       document.getElementById('error-msg').innerText = msg;
     }
 
+    // 2. UNLOCK ACCESS VERIFICATION
     function verifyAccess() {
       localStorage.setItem(CONFIG.key, 'true');
       localStorage.setItem(CONFIG.timeKey, new Date().getTime());
@@ -867,7 +1207,79 @@
       window.open(TELEGRAM_LINK, "_blank");
     }
 
-    // TOAST NOTIFICATION TRIGGER
+    // 3. 60-SECONDS TIMED LOOT POP-UP LOGIC
+    function initTimedLootPopup() {
+      setTimeout(() => {
+        // Sirf tab trigger karein jab pehla lock popup active na ho
+        const forcePop = document.getElementById('forcePop');
+        if (!forcePop.classList.contains('active')) {
+          document.getElementById('timedLootPop').classList.add('active');
+        }
+      }, CONFIG.lootDelay);
+    }
+
+    function handleExcitedLoot() {
+      window.open(LOOT_CHANNEL_LINK, "_blank");
+      document.getElementById('timedLootPop').classList.remove('active');
+    }
+
+    function handleNotExcitedLoot() {
+      document.getElementById('timedLootPop').classList.remove('active');
+    }
+
+    // 4. LIVE SOCIAL PROOF FOMO TICKER
+    const fomoData = [
+      { name: "Rahul (Mumbai)", city: "Mumbai", deal: "Claimed ₹1 Amazon Bug! 🔥" },
+      { name: "Aman (Delhi)", city: "Delhi", deal: "Joined Secret VIP Loot! ⚡" },
+      { name: "Vikram (Bengaluru)", city: "Bengaluru", deal: "Grabbed 99% Off Deal! 🛒" },
+      { name: "Sneha (Pune)", city: "Pune", deal: "Claimed ₹0 Flipkart Product! 🎁" },
+      { name: "Rohit (Lucknow)", city: "Lucknow", deal: "Unlocked VIP Telegram! 🚀" },
+      { name: "Kunal (Jaipur)", city: "Jaipur", deal: "Claimed Free ₹500 Coupon! ⚡" }
+    ];
+
+    function initSocialProofTicker() {
+      const ticker = document.getElementById('fomoTicker');
+      const nameEl = document.getElementById('fomoName');
+      const avatarEl = document.getElementById('fomoAvatar');
+
+      let index = 0;
+      function showNextFomo() {
+        const item = fomoData[index % fomoData.length];
+        avatarEl.innerText = item.name.charAt(0);
+        nameEl.innerText = item.name;
+        ticker.querySelector('.fomo-text-wrap span').innerText = item.deal;
+        
+        ticker.classList.add('show');
+        setTimeout(() => {
+          ticker.classList.remove('show');
+        }, 3600);
+
+        index++;
+        setTimeout(showNextFomo, 11000); // Har 11 seconds me pop hoga
+      }
+
+      setTimeout(showNextFomo, 4000);
+    }
+
+    // 5. URGENCY COUNTDOWN TIMER (LOOT CARD)
+    function startLootCountdown() {
+      let duration = 4 * 60 + 59; // 4 minutes 59 seconds
+      const timerEl = document.getElementById('lootTimer');
+      
+      setInterval(() => {
+        let minutes = Math.floor(duration / 60);
+        let seconds = duration % 60;
+        timerEl.innerText = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        
+        if (duration > 0) {
+          duration--;
+        } else {
+          duration = 5 * 60; // Auto-reset for consistent FOMO
+        }
+      }, 1000);
+    }
+
+    // 6. TOAST MESSAGE UTILITY
     function showToast(message) {
       const toast = document.getElementById('toastMessage');
       document.getElementById('toastText').innerText = message;
@@ -877,45 +1289,30 @@
       }, 2400);
     }
 
-    // INTERACTIVE RELOAD FEEDBACK
-    function handleReload(btn) {
+    function handleReload() {
       const icon = document.getElementById('reloadIcon');
-      icon.style.transform = "rotate(360deg)";
+      if (icon) icon.style.transform = "rotate(360deg)";
       showToast("Reloading Live Feed...");
-      setTimeout(() => {
-        location.reload();
-      }, 400);
+      setTimeout(() => { location.reload(); }, 350);
     }
 
-    // INTERACTIVE SHARE WITH TOAST FEEDBACK
     function handleShare() {
       if (navigator.share) {
-        navigator.share({ title: 'Cricket Yoddha', url: window.location.href }).catch(() => {});
+        navigator.share({ title: 'Cricket Yoddha Live', url: window.location.href }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
         showToast("✓ Link copied to clipboard!");
       }
     }
 
-    // Video auto-loop logic
-    const lootVideo = document.getElementById('lootVideo');
-    if (lootVideo) {
-      lootVideo.addEventListener('ended', function() {
-        setTimeout(function() {
-          lootVideo.currentTime = 0;
-          lootVideo.play();
-        }, 3000);
-      });
-    }
-
-    // Firebase Live Counter Setup
+    // 7. FIREBASE LIVE VIEWERS SETUP
     const firebaseConfig = { 
       apiKey: "AIzaSyA-vR50CMDYJVHApJir-6fmgRqhFiqQDU8", 
       authDomain: "my-website-cricket.firebaseapp.com", 
       databaseURL: "https://my-website-cricket-default-rtdb.firebaseio.com", 
       projectId: "my-website-cricket" 
     };
-    if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     
     const db = firebase.database();
     const today = new Date().toISOString().slice(0, 10);
@@ -923,7 +1320,6 @@
     const currentId = params.get("id") || "default_channel";
 
     const dbRefName = "cricket_yoddha_" + currentId;
-    
     const ref = db.ref('live_users/' + dbRefName + '/' + today);
     ref.transaction(v => (v || 0) + 1);
     ref.on('value', snap => { 
