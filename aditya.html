@@ -3,147 +3,425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Live Stream</title>
+<title>Cricket Yoddha - Live Stream</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMZXC121E6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', '');
+  gtag('config', 'G-SMZXC121E6');
 </script>
 <style>
-html,body{
-margin:0;
-padding:0;
-background:#000;
-overflow:hidden;
-width:100%;
-height:100%;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#main-iframe{
-width:100%;
-height:100%;
-border:none;
-display:block;
-position:absolute;
-top:0;
-left:0;
+html, body {
+  background: #0b0f19;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.telegram-btn{
-position:absolute;
-top:15px;
-left:15px;
-z-index:9999;
-display:flex;
-align-items:center;
-gap:12px;
-background:linear-gradient(135deg,#1e88e5,#1565c0);
-padding:10px 16px;
-border-radius:14px;
-text-decoration:none;
-color:#fff;
-font-size:16px;
-font-weight:600;
-font-family:Arial,sans-serif;
-box-shadow:0 6px 18px rgba(0,0,0,0.5);
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #0b0f19;
+  position: relative;
 }
 
-.telegram-icon{
-width:34px;
-height:34px;
-background:rgba(255,255,255,0.15);
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-border:2px solid #fff;
+/* Header Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #0f172a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.telegram-icon svg{
-width:18px;
-height:18px;
-fill:#fff;
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.error-msg{
-color:white;
-text-align:center;
-font-family:sans-serif;
-margin-top:20px;
-position:absolute;
-width:100%;
-top:50%;
-transform:translateY(-50%);
+.logo-img {
+  height: 28px;
+  object-fit: contain;
+}
+
+.live-badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Video Player Wrapper */
+.player-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+#main-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Content Details Section */
+.content-details {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.channel-info-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.channel-title-box h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.verified-icon {
+  width: 16px;
+  height: 16px;
+  fill: #3b82f6;
+}
+
+.channel-subtitle {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 3px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.viewer-count-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399;
+  white-space: nowrap;
+}
+
+.viewer-dot {
+  width: 7px;
+  height: 7px;
+  background: #34d399;
+  border-radius: 50%;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* Telegram Action Banner */
+.telegram-banner {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.telegram-banner:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.tg-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tg-icon-circle {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tg-icon-circle svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.tg-text-group .tg-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.tg-text-group .tg-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 2px;
+}
+
+.tap-here-btn {
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+}
+
+/* Action Buttons Row */
+.action-buttons-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.action-btn {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.1s ease;
+  text-decoration: none;
+}
+
+.action-btn:active {
+  transform: scale(0.96);
+  background: #334155;
+}
+
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: #94a3b8;
+}
+
+/* Error State */
+.error-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  gap: 10px;
+}
+
+.error-container h2 {
+  font-size: 18px;
+  color: #ef4444;
+}
+
+.error-container p {
+  font-size: 13px;
+  color: #94a3b8;
 }
 </style>
 </head>
-
 <body>
 
-<a href="https://t.me/+jm1Z6R1pi95lYTRl" target="_blank" class="telegram-btn">
+<div class="app-container" id="appContainer">
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-area">
+      <!-- Aap apni logo image yahan laga sakte hain -->
+      <img src="https://cricket-yoddha-2-o-json.pages.dev/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+      <span style="font-weight: 800; font-size: 15px; letter-spacing: 0.5px; color: #facc15;">CRICKET YODDHA</span>
+    </div>
+    <div class="live-badge">● LIVE</div>
+  </div>
 
-<div class="telegram-icon">
-<svg viewBox="0 0 24 24">
-<path d="M9.993 15.674l-.398 5.604c.57 0 .817-.245 1.113-.54l2.67-2.557 5.53 4.047c1.014.558 1.734.264 1.987-.939l3.6-16.86.001-.001c.3-1.4-.506-1.95-1.496-1.58L1.27 9.64c-1.37.53-1.35 1.29-.233 1.64l5.68 1.77L19.29 5.73c.59-.39 1.13-.175.69.215"/>
-</svg>
+  <!-- Video Player Section -->
+  <div class="player-wrapper" id="playerWrapper">
+    <iframe id="main-iframe" allowfullscreen allow="encrypted-media; fullscreen; autoplay"></iframe>
+  </div>
+
+  <!-- Error Message Container -->
+  <div class="error-container" id="errorContainer">
+    <h2 id="errorTitle">Stream Not Found</h2>
+    <p id="errorDesc">Please check the link or try another match stream.</p>
+  </div>
+
+  <!-- Details & Telegram Section -->
+  <div class="content-details" id="detailsSection">
+    <div class="channel-info-row">
+      <div class="channel-title-box">
+        <h1 id="channelName">
+          Loading Stream...
+          <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </h1>
+        <div class="channel-subtitle" id="channelSubtitle">OFFICIAL HD BROADCAST ROOM</div>
+      </div>
+      <div class="viewer-count-pill">
+        <div class="viewer-dot"></div>
+        <span id="viewerCount">115 LIVE</span>
+      </div>
+    </div>
+
+    <!-- Telegram Promotional Banner -->
+    <a href="https://t.me/+jm1Z6R1pi95lYTRl" target="_blank" class="telegram-banner">
+      <div class="tg-banner-left">
+        <div class="tg-icon-circle">
+          <svg viewBox="0 0 24 24">
+            <path d="M9.993 15.674l-.398 5.604c.57 0 .817-.245 1.113-.54l2.67-2.557 5.53 4.047c1.014.558 1.734.264 1.987-.939l3.6-16.86.001-.001c.3-1.4-.506-1.95-1.496-1.58L1.27 9.64c-1.37.53-1.35 1.29-.233 1.64l5.68 1.77L19.29 5.73c.59-.39 1.13-.175.69.215"/>
+          </svg>
+        </div>
+        <div class="tg-text-group">
+          <div class="tg-title">JOIN OFFICIAL TELEGRAM</div>
+          <div class="tg-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
+        </div>
+      </div>
+      <div class="tap-here-btn">TAP HERE 👉</div>
+    </a>
+
+    <!-- Action Buttons (Reload & Share with tactile active feedback) -->
+    <div class="action-buttons-row">
+      <button class="action-btn" onclick="reloadStream()">
+        <svg viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+        Reload Stream
+      </button>
+      <button class="action-btn" onclick="shareStream()">
+        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        Share Stream
+      </button>
+    </div>
+  </div>
 </div>
 
-<span>Aditya Cricbuzz</span>
-
-</a>
-
-<iframe id="main-iframe" allowfullscreen allow="encrypted-media; fullscreen; autoplay"></iframe>
 <script>
-window.addEventListener('DOMContentLoaded',()=>{
+window.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  
+  const iframe = document.getElementById('main-iframe');
+  const playerWrapper = document.getElementById('playerWrapper');
+  const detailsSection = document.getElementById('detailsSection');
+  const errorContainer = document.getElementById('errorContainer');
+  const channelNameEl = document.getElementById('channelName');
+  const viewerCountEl = document.getElementById('viewerCount');
 
-const join = confirm("Join Our Telegram Channel");
+  // Random realistic viewer count generator
+  const randomViewers = Math.floor(Math.random() * (450 - 90 + 1)) + 90;
+  viewerCountEl.innerText = randomViewers + " LIVE";
 
-if(join){
-location.href = "https://t.me/+jm1Z6R1pi95lYTRl";
-}
+  if (id) {
+    fetch('https://cricket-yoddha-2-o-json.pages.dev/links.json')
+      .then(res => res.json())
+      .then(data => {
+        // data.iframes array me se matching id search karega
+        const targetData = data.iframes ? data.iframes.find(item => item.id === id) : null;
+        
+        if (targetData && targetData.iframeSrc) {
+          iframe.src = targetData.iframeSrc;
+          
+          // JSON ke andar jo channel/stream ka naam diya hai use update karega
+          if (targetData.name || targetData.title) {
+            const nameTxt = targetData.name || targetData.title;
+            channelNameEl.innerHTML = `${nameTxt} <svg class="verified-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>`;
+          }
 
-const urlParams=new URLSearchParams(window.location.search);
-const id=urlParams.get('id');
-const iframe=document.getElementById('main-iframe');
+          // Hit tracking agar JSON me di ho
+          if (targetData.hit) {
+            fetch(targetData.hit).catch(() => {});
+          }
+        } else {
+          showError("Stream Not Found", "The requested stream ID is invalid or unavailable.");
+        }
+      })
+      .catch(() => {
+        showError("Connection Error", "Failed to load stream data from server.");
+      });
+  } else {
+    showError("No Stream ID Provided", "Please provide a valid stream ID in the URL parameter.");
+  }
 
-if(id){
-fetch('https://cricket-yoddha-2-o-json.pages.dev/links.json')
-.then(res=>res.json())
-.then(data=>{
-const targetData=data.iframes.find(item=>item.id===id);
-if(targetData && targetData.iframeSrc){
-iframe.src=targetData.iframeSrc;
-
-if(targetData.hit){
-fetch(targetData.hit).catch(()=>{});
-}
-
-}else{
-showError("Stream not found");
-}
-})
-.catch(()=>{
-showError("Error loading data");
+  function showError(title, desc) {
+    document.getElementById('errorTitle').innerText = title;
+    document.getElementById('errorDesc').innerText = desc;
+    playerWrapper.style.display = 'none';
+    detailsSection.style.display = 'none';
+    errorContainer.style.display = 'flex';
+  }
 });
-}else{
-showError("No ID provided");
+
+// Reload button action with active feedback
+function reloadStream() {
+  const iframe = document.getElementById('main-iframe');
+  iframe.src = iframe.src;
 }
 
-function showError(msg){
-const h2=document.createElement('h2');
-h2.className='error-msg';
-h2.innerText=msg;
-document.body.appendChild(h2);
-iframe.style.display='none';
-const badge=document.querySelector('.telegram-btn');
-if(badge) badge.style.display='none';
+// Share button action
+function shareStream() {
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      text: 'Watch Live Cricket Stream on Cricket Yoddha',
+      url: window.location.href,
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert('Stream link copied to clipboard!');
+  }
 }
-
-});
 </script>
 </body>
 </html>
