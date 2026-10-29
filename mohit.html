@@ -21,9 +21,6 @@
       --app-border: rgba(255, 255, 255, 0.08);
       --app-blue: #0f62fe;
       --app-cyan: #00d2ff;
-      --app-gold: #ffb800;
-      --app-live: #e50914;
-      --accent-mint: #00f076;
       --text-main: #f8fafc;
       --text-sub: #94a3b8;
       --glass-blur: blur(16px);
@@ -193,10 +190,6 @@
       background: #000;
       border-bottom: 1px solid var(--app-border);
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
-    }
-    #main-stage.locked .video-box {
-      pointer-events: none;
-      user-select: none;
     }
     .video-box {
       width: 100%;
@@ -459,7 +452,6 @@
       margin-bottom: 16px;
     }
     
-    /* New Button Styles */
     .popup-buttons {
       display: flex;
       flex-direction: column;
@@ -536,18 +528,17 @@
       align-items: center; justify-content: center; flex-direction: column;
       gap: 12px; z-index: 9998; padding: 20px; text-align: center;
     }
-    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--app-live); }
+    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #e50914; }
   </style>
 </head>
 <body>
 
   <!-- ========================================================
-       SPLASH SCREEN (TEXT ONLY)
+       SPLASH SCREEN
        ======================================================== -->
   <div id="loading-screen">
     <div class="splash-logo-container">
       <div class="splash-glow-halo"></div>
-      <!-- PNG Logo Replaced with Text -->
       <h1 class="splash-logo-text">mohit vox</h1>
     </div>
     <div class="splash-progress-track">
@@ -573,7 +564,6 @@
        ======================================================== -->
   <header>
     <div class="header-logo-wrap">
-      <!-- PNG Logo Replaced with Text -->
       <h1 class="header-logo-text">mohit vox</h1>
       <div class="stream-live-badge">
         <div class="live-pulse-dot"></div> LIVE
@@ -633,7 +623,7 @@
   </div>
 
   <!-- ========================================================
-       UNLOCK POP-UP (UPDATED)
+       UNLOCK POP-UP 
        ======================================================== -->
   <div class="overlay" id="forcePop">
     <div class="popup">
@@ -667,14 +657,13 @@
        ======================================================== -->
   <script>
     const CONFIG = { 
-      preview: 5000 // 5 seconds preview before lock
+      preview: 5000 // 5 seconds preview before popup shows up
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_LINK = "https://t.me/addlist/ZVgzdiBtVBwzM2M1";
 
     window.onload = () => {
-      // Always lock and show popup on every refresh
-      document.getElementById('main-stage').classList.add('locked');
+      // Show popup after 5 seconds, BUT video remains fully playable in background
       setTimeout(() => {
         document.getElementById('forcePop').classList.add('active');
       }, CONFIG.preview);
@@ -744,9 +733,8 @@
 
     // 2. UNLOCK ACCESS VERIFICATION
     function unlockStream() {
-      // Closes popup and unlocks the video box
+      // Closes popup allowing the user to interact with the video again
       document.getElementById('forcePop').classList.remove('active');
-      document.getElementById('main-stage').classList.remove('locked');
     }
 
     function goTelegram() {
