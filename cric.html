@@ -299,4 +299,473 @@
       left: -60%;
       width: 35%;
       height: 200%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: rotate(25deg);
+      animation: sweepLight 2.6s infinite ease-in-out;
+    }
+    @keyframes sweepLight {
+      0% { left: -60%; }
+      50%, 100% { left: 140%; }
+    }
+    .vip-card-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .vip-icon-wrap {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      backdrop-filter: blur(8px);
+    }
+    .vip-icon-wrap svg { width: 22px; height: 22px; fill: #fff; }
+    .vip-text-box {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .vip-text-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .vip-text-desc {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+    }
+    .btn-tap-pill {
+      background: #fff;
+      color: #0f62fe;
+      font-size: 11px;
+      font-weight: 900;
+      padding: 7px 12px;
+      border-radius: 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      flex-shrink: 0;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .interactive-btn {
+      background: var(--app-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--app-border);
+      color: #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 11px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    }
+    .interactive-btn i { font-size: 16px; color: var(--app-cyan); }
+    .interactive-btn:active {
+      transform: scale(0.96);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* ========================================================
+       MODAL OVERLAYS & POPUPS 
+       ======================================================== */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 9000;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+    }
+    .overlay.active { display: flex; }
+
+    .popup {
+      background: linear-gradient(165deg, rgba(20, 27, 48, 0.96) 0%, rgba(9, 13, 24, 0.98) 100%);
+      border: 1px solid rgba(0, 210, 255, 0.45);
+      border-radius: 20px;
+      padding: 22px 18px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 210, 255, 0.15);
+      position: relative;
+      animation: popZoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes popZoom {
+      from { transform: scale(0.85) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    .popup-icon {
+      width: 46px;
+      height: 46px;
+      background: linear-gradient(135deg, var(--app-blue), #0043ce);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      box-shadow: 0 6px 18px rgba(15, 98, 254, 0.45);
+    }
+    .popup-icon svg { width: 22px; height: 22px; fill: #fff; }
+    .popup-brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .popup-title-english {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .popup-title-english span { color: var(--app-cyan); }
+    .popup-desc-english {
+      color: #94a3b8;
+      font-size: 11.5px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .popup-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-join {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--app-blue) 0%, #0043ce 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      box-shadow: 0 4px 16px rgba(15, 98, 254, 0.45);
+      transition: transform 0.15s ease;
+    }
+    .btn-join:active { transform: scale(0.97); }
+    
+    .btn-already {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #94a3b8;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.15s ease;
+    }
+    .btn-already:active {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    /* IN-APP TOAST */
+    .app-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(14, 19, 34, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--app-cyan);
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 30px;
+      font-size: 11.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      z-index: 99999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
+    }
+    .app-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ERROR SCREEN */
+    #error-screen {
+      display: none; position: fixed; inset: 0; background: var(--app-bg);
+      align-items: center; justify-content: center; flex-direction: column;
+      gap: 12px; z-index: 9998; padding: 20px; text-align: center;
+    }
+    #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #e50914; }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       SPLASH SCREEN
+       ======================================================== -->
+  <div id="loading-screen">
+    <div class="splash-logo-container">
+      <div class="splash-glow-halo"></div>
+      <h1 class="splash-logo-text">cricbomb</h1>
+    </div>
+    <div class="splash-progress-track">
+      <div class="splash-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- TOAST FEEDBACK -->
+  <div id="toastMessage" class="app-toast">
+    <i class="material-icons" style="color: var(--app-cyan); font-size: 16px;">check_circle</i>
+    <span id="toastText">Link copied to clipboard!</span>
+  </div>
+
+  <!-- ERROR OVERLAY -->
+  <div id="error-screen">
+    <h2>STREAM OFFLINE</h2>
+    <p id="error-msg" style="color: #94a3b8; font-size: 13px;">This stream channel is not transmitting.</p>
+    <a href="javascript:location.reload()" style="display:inline-block; margin-top:8px; padding:8px 16px; background:var(--app-blue); color:#fff; border-radius:8px; text-decoration:none; font-weight:800; font-size:12px;">RELOAD STREAM</a>
+  </div>
+
+  <!-- ========================================================
+       TOP APP BAR
+       ======================================================== -->
+  <header>
+    <div class="header-logo-wrap">
+      <h1 class="header-logo-text">cricbomb</h1>
+      <div class="stream-live-badge">
+        <div class="live-pulse-dot"></div> LIVE
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN PLAYER STAGE
+       ======================================================== -->
+  <div id="main-stage">
+    <div class="video-box">
+      <iframe id="main-player" allowfullscreen="true" scrolling="no" allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+
+  <!-- STREAM ROOM META BAR -->
+  <div class="stream-room-meta">
+    <div class="stream-room-left">
+      <div class="channel-header-row">
+        <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
+        <span class="verified-badge"><i class="material-icons" style="font-size: 15px;">verified</i></span>
+      </div>
+      <div class="stream-room-sub">Official HD Broadcast Room</div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       ACTIONS AREA 
+       ======================================================== -->
+  <div class="room-actions-container">
+    
+    <!-- VIP 1-CLICK JOIN BAR -->
+    <a href="https://t.me/%2Bdieq5sf2FYMxNWE1?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAVTFJFleHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpz21ZRGG3CuUNuVidDFtbvWfRj5h2-_KwLy0msaqHgtLzHpRYL4K6qcD5on5_aem_nPSJ8-MmUnvNWcHB2ByDgQ" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
+      <div class="vip-card-left">
+        <div class="vip-icon-wrap">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        </div>
+        <div class="vip-text-box">
+          <div class="vip-text-title">Join Official Telegram</div>
+          <div class="vip-text-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
+        </div>
+      </div>
+      <div class="btn-tap-pill">TAP HERE 👉</div>
+    </a>
+
+    <!-- QUICK CONTROLS -->
+    <div class="controls-grid">
+      <button onclick="handleReload()" class="interactive-btn">
+        <i class="material-icons" id="reloadIcon">refresh</i> Reload Stream
+      </button>
+      <button onclick="handleShare()" class="interactive-btn">
+        <i class="material-icons">share</i> Share Stream
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ========================================================
+       UNLOCK POP-UP 
+       ======================================================== -->
+  <div class="overlay" id="forcePop">
+    <div class="popup">
+      <div class="popup-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+      </div>
+
+      <div class="popup-brand-name">cricbomb</div>
+      
+      <div class="popup-title-english">
+        Unlock <span>Full Stream</span> Access
+      </div>
+
+      <p class="popup-desc-english">
+        Please join our official Telegram channel to unlock uninterrupted HD access to this live match.
+      </p>
+
+      <div class="popup-buttons">
+        <button class="btn-join" onclick="goTelegram()">
+          Join Telegram Channel
+        </button>
+        <button class="btn-already" onclick="unlockStream()">
+          Already Joined
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       SCRIPTS & LOGIC INTEGRATION
+       ======================================================== -->
+  <script>
+    const CONFIG = { 
+      preview: 5000 // 5 seconds preview before popup shows up
+    };
+    const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
+    const TELEGRAM_LINK = "https://t.me/%2Bdieq5sf2FYMxNWE1?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAVTFJFleHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpz21ZRGG3CuUNuVidDFtbvWfRj5h2-_KwLy0msaqHgtLzHpRYL4K6qcD5on5_aem_nPSJ8-MmUnvNWcHB2ByDgQ";
+
+    window.onload = () => {
+      // Show popup after 5 seconds, BUT video remains fully playable in background
+      setTimeout(() => {
+        document.getElementById('forcePop').classList.add('active');
+      }, CONFIG.preview);
+      
+      loadStream();
+    };
+
+    // 1. STREAM LOADER (DYNAMIC VIA JSON)
+    async function loadStream() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      
+      if (!id) {
+        showError("No channel ID specified.");
+        return;
+      }
+
+      try {
+        const response = await fetch(JSON_URL + "?t=" + Date.now());
+        if (!response.ok) throw new Error("Fetch failed");
+        
+        const data = await response.json();
+        let iframeSrc = "";
+        let channelTitle = id.replace(/[-_]/g, ' ').toUpperCase();
+
+        if (data.iframes) {
+          const found = data.iframes.find(x => x.id === id);
+          if (found) {
+            iframeSrc = found.iframeSrc;
+            if (found.name || found.channel || found.title || found.channelName) {
+              channelTitle = found.name || found.channel || found.title || found.channelName;
+            }
+          }
+        } else if (data.channels && data.channels[id]) {
+          if (typeof data.channels[id] === 'object') {
+            iframeSrc = data.channels[id].iframeSrc || data.channels[id].link || data.channels[id].url;
+            channelTitle = data.channels[id].name || data.channels[id].channel || channelTitle;
+          } else {
+            iframeSrc = data.channels[id];
+          }
+        }
+
+        if (!iframeSrc) {
+          showError("Channel stream not found.");
+          return;
+        }
+
+        document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
+        document.getElementById('main-player').src = iframeSrc;
+        
+        // Hide splash screen smoothly
+        const splash = document.getElementById('loading-screen');
+        splash.style.opacity = '0';
+        setTimeout(() => { splash.style.display = 'none'; }, 450);
+
+      } catch (e) {
+        showError("Failed to fetch stream details.");
+      }
+    }
+
+    function showError(msg) {
+      document.getElementById('loading-screen').style.display = 'none';
+      const errScreen = document.getElementById('error-screen');
+      errScreen.style.display = 'flex';
+      document.getElementById('error-msg').innerText = msg;
+    }
+
+    // 2. UNLOCK ACCESS VERIFICATION
+    function unlockStream() {
+      // Closes popup allowing the user to interact with the video again
+      document.getElementById('forcePop').classList.remove('active');
+    }
+
+    function goTelegram() {
+      // Opens telegram and unlocks the video
+      unlockStream();
+      window.open(TELEGRAM_LINK, "_blank");
+    }
+
+    // 3. UTILITIES
+    function showToast(message) {
+      const toast = document.getElementById('toastMessage');
+      document.getElementById('toastText').innerText = message;
+      toast.classList.add('active');
+      setTimeout(() => { toast.classList.remove('active'); }, 2400);
+    }
+
+    function handleReload() {
+      const icon = document.getElementById('reloadIcon');
+      if (icon) icon.style.transform = "rotate(360deg)";
+      showToast("Reloading Live Feed...");
+      setTimeout(() => { location.reload(); }, 350);
+    }
+
+    function handleShare() {
+      if (navigator.share) {
+        navigator.share({ title: 'cricbomb Live', url: window.location.href }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        showToast("Link copied to clipboard!");
+      }
+    }
+  </script>
+</body>
+</html>
