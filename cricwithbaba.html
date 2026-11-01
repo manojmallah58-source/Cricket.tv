@@ -79,9 +79,9 @@
     }
     .splash-logo-text {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 38px; /* Adjusted slightly to fit the longer name */
+      font-size: 46px;
       color: #fff;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       position: relative;
       z-index: 2;
@@ -145,7 +145,7 @@
     }
     .header-logo-text {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; /* Adjusted slightly to fit the longer name */
+      font-size: 26px;
       color: #fff;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -155,7 +155,7 @@
     }
     .stream-live-badge {
       position: absolute;
-      right: -55px; /* Adjusted for the new text length */
+      right: -62px;
       top: 50%;
       transform: translateY(-50%);
       background: linear-gradient(135deg, #e50914, #c0040e);
@@ -598,7 +598,7 @@
   <div class="room-actions-container">
     
     <!-- VIP 1-CLICK JOIN BAR -->
-    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
+    <a href="https://t.me/predict_with_rn" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
@@ -661,13 +661,32 @@
       preview: 5000 // 5 seconds preview before popup shows up
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
-    const TELEGRAM_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
+    const TELEGRAM_LINK = "https://t.me/predict_with_rn";
 
     window.onload = () => {
-      // Show popup after 5 seconds, BUT video remains fully playable in background
-      setTimeout(() => {
-        document.getElementById('forcePop').classList.add('active');
-      }, CONFIG.preview);
+      const params = new URLSearchParams(window.location.search);
+      
+      // 1. अगर लिंक में hide=boss है, तो उसके ब्राउज़र में हमेशा के लिए VIP पास सेव कर दो
+      if (params.get("hide") === "boss") {
+        localStorage.setItem("vip_admin_device", "true");
+        // URL से hide=boss को तुरंत हटा दो ताकि उसे लिंक नॉर्मल दिखे
+        let cleanId = params.get("id") || "";
+        window.history.replaceState({}, document.title, window.location.pathname + "?id=" + cleanId);
+      }
+
+      // 2. चेक करो कि क्या इस फोन/डिवाइस में VIP पास सेव है?
+      const isBossDevice = localStorage.getItem("vip_admin_device");
+      
+      // Also check if the normal user clicked "Already Joined" within the last 24 hours
+      const userExpiry = localStorage.getItem("user_joined_telegram");
+      const isNormalUserValid = userExpiry && parseInt(userExpiry) > Date.now();
+
+      // 3. अगर VIP पास नहीं है (यानी ऑडियंस है), तो ही 5 सेकंड बाद पॉपअप दिखाओ
+      if (isBossDevice !== "true" && !isNormalUserValid) {
+        setTimeout(() => {
+          document.getElementById('forcePop').classList.add('active');
+        }, CONFIG.preview);
+      }
       
       loadStream();
     };
@@ -736,6 +755,10 @@
     function unlockStream() {
       // Closes popup allowing the user to interact with the video again
       document.getElementById('forcePop').classList.remove('active');
+      
+      // Save 24-hour cookie for normal users so they don't get annoyed on refresh
+      const expiryTime = Date.now() + (24 * 60 * 60 * 1000); 
+      localStorage.setItem("user_joined_telegram", expiryTime.toString());
     }
 
     function goTelegram() {
