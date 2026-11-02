@@ -263,7 +263,7 @@
       padding: 12px 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 15px;
       max-width: 520px;
       margin: 0 auto;
       width: 100%;
@@ -381,6 +381,76 @@
     .interactive-btn:active {
       transform: scale(0.96);
       background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* ========================================================
+       CHANNELS LIST GRID (NEW ADDITION)
+       ======================================================== */
+    .channel-list-container {
+      margin-top: 5px;
+      width: 100%;
+    }
+    .channel-list-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .channel-list-title i {
+      color: var(--app-cyan);
+      font-size: 18px;
+    }
+    .channels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .channel-item {
+      background: rgba(14, 21, 38, 0.8);
+      border: 1px solid var(--app-border);
+      border-radius: 10px;
+      padding: 12px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .channel-item:hover, .channel-item:active {
+      background: rgba(15, 98, 254, 0.15);
+      border-color: rgba(0, 210, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    .channel-icon {
+      background: rgba(255, 255, 255, 0.1);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .channel-icon i {
+      font-size: 16px;
+      color: var(--app-cyan);
+    }
+    .channel-name {
+      font-size: 11.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     /* ========================================================
@@ -613,11 +683,21 @@
     <!-- QUICK CONTROLS -->
     <div class="controls-grid">
       <button onclick="handleReload()" class="interactive-btn">
-        <i class="material-icons" id="reloadIcon">refresh</i> Reload Stream
+        <i class="material-icons" id="reloadIcon">refresh</i> Reload
       </button>
       <button onclick="handleShare()" class="interactive-btn">
-        <i class="material-icons">share</i> Share Stream
+        <i class="material-icons">share</i> Share
       </button>
+    </div>
+
+    <!-- CHANNELS LIST SECTION (NEW) -->
+    <div class="channel-list-container" id="channelListSection" style="display: none;">
+      <div class="channel-list-title">
+        <i class="material-icons">format_list_bulleted</i> All Live Channels
+      </div>
+      <div class="channels-grid" id="channelsGrid">
+        <!-- Channels will be injected here automatically from JSON -->
+      </div>
     </div>
 
   </div>
@@ -663,7 +743,7 @@
     const TELEGRAM_LINK = "https://t.me/+mQXe_zKZQlgyZjY1";
 
     window.onload = () => {
-      // Show popup after 5 seconds, BUT video remains fully playable in background
+      // Show popup after 5 seconds
       setTimeout(() => {
         document.getElementById('forcePop').classList.add('active');
       }, CONFIG.preview);
@@ -676,16 +756,20 @@
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
       
-      if (!id) {
-        showError("No channel ID specified.");
-        return;
-      }
-
       try {
         const response = await fetch(JSON_URL + "?t=" + Date.now());
         if (!response.ok) throw new Error("Fetch failed");
         
         const data = await response.json();
+        
+        // Populate Bottom Channel List from JSON
+        renderChannelList(data);
+
+        if (!id) {
+          showError("Please select a channel from the list below.");
+          return;
+        }
+
         let iframeSrc = "";
         let channelTitle = id.replace(/[-_]/g, ' ').toUpperCase();
 
@@ -724,6 +808,52 @@
       }
     }
 
+    // Render channels in the UI dynamically
+    function renderChannelList(data) {
+      const grid = document.getElementById('channelsGrid');
+      const section = document.getElementById('channelListSection');
+      
+      let channels = [];
+
+      // Extract channels from JSON
+      if (data.iframes && Array.isArray(data.iframes)) {
+        data.iframes.forEach(item => {
+          let name = item.name || item.channel || item.title || item.channelName || item.id;
+          channels.push({ id: item.id, name: name });
+        });
+      } else if (data.channels && typeof data.channels === 'object') {
+        for (let key in data.channels) {
+          let item = data.channels[key];
+          let name = key;
+          if (typeof item === 'object') {
+            name = item.name || item.channel || key;
+          }
+          channels.push({ id: key, name: name });
+        }
+      }
+
+      if (channels.length > 0) {
+        section.style.display = 'block'; // Show section if channels exist
+        grid.innerHTML = '';
+        
+        channels.forEach(ch => {
+          // Create anchor tag
+          let a = document.createElement('a');
+          a.href = "?id=" + ch.id;
+          a.className = "channel-item";
+          
+          // HTML for each channel card
+          a.innerHTML = `
+            <div class="channel-icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <span class="channel-name">${ch.name}</span>
+          `;
+          grid.appendChild(a);
+        });
+      }
+    }
+
     function showError(msg) {
       document.getElementById('loading-screen').style.display = 'none';
       const errScreen = document.getElementById('error-screen');
@@ -733,12 +863,10 @@
 
     // 2. UNLOCK ACCESS VERIFICATION
     function unlockStream() {
-      // Closes popup allowing the user to interact with the video again
       document.getElementById('forcePop').classList.remove('active');
     }
 
     function goTelegram() {
-      // Opens telegram and unlocks the video
       unlockStream();
       window.open(TELEGRAM_LINK, "_blank");
     }
