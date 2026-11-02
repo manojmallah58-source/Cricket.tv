@@ -48,6 +48,23 @@
     }
 
     /* ========================================================
+       CLEAN SPLASH SCREEN (ANIMATION REMOVED AS REQUESTED)
+       ======================================================== */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      background: #05070f;
+      background-image: radial-gradient(circle at 50% 45%, #14244d 0%, #070a16 65%, #030408 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 22px;
+      z-index: 99999;
+      transition: opacity 0.45s ease, visibility 0.45s;
+    }
+    
+    /* ========================================================
        TOP HEADER BAR
        ======================================================== */
     header {
@@ -142,7 +159,7 @@
       background: linear-gradient(to bottom, rgba(14, 21, 38, 0.95), rgba(8, 12, 23, 0.95));
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border-bottom: 1px solid rgba(0, 210, 255, 0.15); /* Premium cyan border */
+      border-bottom: 1px solid rgba(0, 210, 255, 0.15);
       padding: 14px 16px;
       display: flex;
       align-items: center;
@@ -156,18 +173,18 @@
     }
     .channel-header-row {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 6px;
     }
     .channel-name-txt {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 900;
       color: #fff;
       text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: normal; /* Name ab katega nahi */
+      word-break: break-word;
+      line-height: 1.2;
       letter-spacing: 0.5px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
@@ -176,6 +193,7 @@
       font-size: 16px;
       display: flex;
       align-items: center;
+      margin-top: 1px;
     }
     .stream-room-sub {
       font-size: 10px;
@@ -460,7 +478,7 @@
     #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #e50914; }
 
     /* ========================================================
-       TAB MENU CSS (HORIZONTAL CHANNELS LIST)
+       TAB MENU CSS (PERFECTED CHANNELS TEXT & GRID)
        ======================================================== */
     .tabs-wrapper {
       margin-top: 15px;
@@ -472,10 +490,10 @@
       overflow-x: auto;
       padding-bottom: 8px;
       margin-bottom: 12px;
-      scrollbar-width: none; /* Firefox */
+      scrollbar-width: none;
     }
     .tabs-container::-webkit-scrollbar {
-      display: none; /* Chrome/Safari */
+      display: none;
     }
     .tab-btn {
       background: var(--app-card);
@@ -509,13 +527,14 @@
       background: rgba(14, 21, 38, 0.6);
       border: 1px solid var(--app-border);
       border-radius: 11px;
-      padding: 10px 12px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
       gap: 8px;
       text-decoration: none;
       color: #fff;
       transition: all 0.2s ease;
+      min-height: 46px; /* Uniform height even if text wraps */
     }
     .channel-item:hover, .channel-item:active {
       background: rgba(15, 98, 254, 0.15);
@@ -524,24 +543,28 @@
     }
     .channel-icon {
       background: rgba(255, 255, 255, 0.1);
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
     .channel-icon i {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--app-cyan);
     }
+    
+    /* PERFECTED NAME TEXT - FULL VISIBILITY */
     .channel-name {
-      font-size: 11.5px;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 10px; /* Chota size */
+      font-weight: 800;
+      white-space: normal; /* Katega nahi, dusri line mein aayega */
+      word-break: break-word;
       text-transform: uppercase;
+      line-height: 1.25;
+      letter-spacing: 0.3px;
     }
   </style>
 </head>
@@ -669,7 +692,7 @@
        ======================================================== -->
   <script>
     const CONFIG = { 
-      preview: 5000 // 5 seconds preview before popup shows up
+      preview: 5000 
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_LINK = "https://t.me/+mQXe_zKZQlgyZjY1";
@@ -677,7 +700,6 @@
     let globalGroupedChannels = {}; 
 
     window.onload = () => {
-      // Show popup after 5 seconds, BUT video remains fully playable in background
       setTimeout(() => {
         document.getElementById('forcePop').classList.add('active');
       }, CONFIG.preview);
@@ -685,7 +707,6 @@
       loadStream();
     };
 
-    // 1. STREAM LOADER (DYNAMIC VIA JSON)
     async function loadStream() {
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
@@ -695,11 +716,8 @@
         if (!response.ok) throw new Error("Fetch failed");
         
         const data = await response.json();
-        
-        // टैब्स और चैनल्स सेटअप करना
         setupTabs(data);
 
-        // अगर कोई ID नहीं है URL में
         if (!id) {
           return;
         }
@@ -716,7 +734,6 @@
             }
           }
         } 
-        // पुराने JSON फॉर्मेट के लिए सपोर्ट
         else if (data.channels && data.channels[id]) {
           if (typeof data.channels[id] === 'object') {
             iframeSrc = data.channels[id].iframeSrc || data.channels[id].link || data.channels[id].url;
@@ -739,7 +756,6 @@
       }
     }
 
-    // TABS LOGIC
     function setupTabs(data) {
       const tabsSection = document.getElementById('tabsSection');
       const tabsContainer = document.getElementById('tabsContainer');
@@ -747,15 +763,12 @@
       if (data.iframes && data.iframes.length > 0) {
         tabsSection.style.display = 'block';
         
-        // क्रम सेट करना
         const categoryOrder = ["Star Sports", "Sony Sports", "iPhone", "World Wide"];
         
         categoryOrder.forEach(cat => globalGroupedChannels[cat] = []);
 
-        // डाटा को केटेगरी में बाँटना
         data.iframes.forEach(ch => {
           if (ch.iframeSrc && ch.iframeSrc.trim() !== "") {
-            // अगर JSON में केटेगरी का नाम मैच नहीं होता, तो उसे "World Wide" में डाल दो
             let cat = categoryOrder.includes(ch.category) ? ch.category : "World Wide";
             globalGroupedChannels[cat].push(ch);
           }
@@ -764,34 +777,29 @@
         tabsContainer.innerHTML = '';
         let firstAvailableCat = null;
 
-        // बटन (Tabs) बनाना
         categoryOrder.forEach(cat => {
           if (globalGroupedChannels[cat].length > 0) {
-            if(!firstAvailableCat) firstAvailableCat = cat; // पहला टैब सेव करना
+            if(!firstAvailableCat) firstAvailableCat = cat; 
             
             let btn = document.createElement('button');
             btn.className = 'tab-btn';
             btn.innerText = cat;
-            btn.onclick = () => switchTab(cat, btn); // क्लिक करने पर टैब चेंज
+            btn.onclick = () => switchTab(cat, btn); 
             tabsContainer.appendChild(btn);
           }
         });
 
-        // पेज लोड होने पर सबसे पहला टैब आटोमेटिक खोलना
         if (firstAvailableCat) {
           switchTab(firstAvailableCat, tabsContainer.firstChild);
         }
       }
     }
 
-    // जब यूज़र किसी टैब पर क्लिक करता है
     function switchTab(category, btnElement) {
-      // सारे बटनों से 'active' क्लास हटाओ, और जिसपे क्लिक हुआ है उसपे लगाओ
       const allTabs = document.querySelectorAll('.tab-btn');
       allTabs.forEach(t => t.classList.remove('active'));
       btnElement.classList.add('active');
 
-      // ग्रिड क्लियर करो और सिलेक्टेड केटेगरी के चैनल्स डालो
       const grid = document.getElementById('channelsGrid');
       grid.innerHTML = '';
       
@@ -813,19 +821,15 @@
       document.getElementById('error-msg').innerText = msg;
     }
 
-    // 2. UNLOCK ACCESS VERIFICATION
     function unlockStream() {
-      // Closes popup allowing the user to interact with the video again
       document.getElementById('forcePop').classList.remove('active');
     }
 
     function goTelegram() {
-      // Opens telegram and unlocks the video
       unlockStream();
       window.open(TELEGRAM_LINK, "_blank");
     }
 
-    // 3. UTILITIES (ORIGINAL)
     function showToast(message) {
       const toast = document.getElementById('toastMessage');
       document.getElementById('toastText').innerText = message;
