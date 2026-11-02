@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
-  <title>mohit vox - Live Stream</title>
+  <title>Mohitvox - Live Stream</title>
   
   <!-- Fonts & Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800;900&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     /* ========================================================
@@ -48,7 +48,7 @@
     }
 
     /* ========================================================
-       CLEAN SPLASH SCREEN
+       CLEAN SPLASH SCREEN (ANIMATION REMOVED)
        ======================================================== */
     #loading-screen {
       position: fixed;
@@ -63,62 +63,7 @@
       z-index: 99999;
       transition: opacity 0.45s ease, visibility 0.45s;
     }
-    .splash-logo-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .splash-glow-halo {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(0, 210, 255, 0.35) 0%, transparent 70%);
-      filter: blur(16px);
-      animation: splashAura 2s infinite ease-in-out;
-    }
-    .splash-logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 46px;
-      color: #fff;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 2;
-      text-shadow: 0 0 25px rgba(15, 98, 254, 0.7);
-      animation: pulseSplashText 1.9s infinite ease-in-out;
-      margin: 0;
-      line-height: 1;
-    }
-    @keyframes splashAura {
-      0%, 100% { transform: scale(0.9); opacity: 0.5; }
-      50% { transform: scale(1.3); opacity: 0.95; }
-    }
-    @keyframes pulseSplashText {
-      0%, 100% { transform: scale(1); text-shadow: 0 0 20px rgba(15, 98, 254, 0.5); }
-      50% { transform: scale(1.05); text-shadow: 0 0 35px rgba(0, 210, 255, 0.85); }
-    }
-    .splash-progress-track {
-      width: 150px;
-      height: 3.5px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-    }
-    .splash-progress-bar {
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--app-blue), var(--app-cyan));
-      border-radius: 6px;
-      position: absolute;
-      animation: progressSweep 1.1s infinite ease-in-out;
-    }
-    @keyframes progressSweep {
-      0% { left: -50%; }
-      100% { left: 100%; }
-    }
-
+    
     /* ========================================================
        TOP HEADER BAR
        ======================================================== */
@@ -208,23 +153,17 @@
     }
 
     /* ========================================================
-       STREAM META BAR
+       COMPACT STREAM META BAR 
        ======================================================== */
     .stream-room-meta {
-      background: rgba(11, 17, 32, 0.85);
+      background: linear-gradient(to bottom, rgba(14, 21, 38, 0.95), rgba(8, 12, 23, 0.95));
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border-bottom: 1px solid var(--app-border);
-      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+      padding: 10px 16px; 
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-    .stream-room-left {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      width: 100%;
+      justify-content: flex-start;
     }
     .channel-header-row {
       display: flex;
@@ -233,54 +172,49 @@
     }
     .channel-name-txt {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 13.5px;
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 900;
       color: #fff;
       text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      letter-spacing: 0.4px;
+      white-space: normal;
+      word-break: break-word;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     .verified-badge {
       color: var(--app-cyan);
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
-    }
-    .stream-room-sub {
-      font-size: 9.5px;
-      color: var(--text-sub);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
     }
 
     /* ========================================================
        ACTIONS AREA
        ======================================================== */
     .room-actions-container {
-      padding: 12px 14px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       max-width: 520px;
       margin: 0 auto;
       width: 100%;
     }
 
+    /* 🔥 SLIM & COMPACT TELEGRAM BUTTON 🔥 */
     .vip-telegram-pass {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 12px 16px;
+      padding: 8px 12px; 
       background: linear-gradient(135deg, #0f62fe 0%, #0043ce 100%);
-      border: 1.5px solid rgba(0, 210, 255, 0.55);
-      border-radius: 14px;
+      border: 1px solid rgba(0, 210, 255, 0.55);
+      border-radius: 10px; 
       color: #fff;
       text-decoration: none;
-      box-shadow: 0 8px 25px rgba(15, 98, 254, 0.45);
+      box-shadow: 0 6px 20px rgba(15, 98, 254, 0.35);
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -288,8 +222,8 @@
       animation: cardGlow 2.5s infinite alternate;
     }
     @keyframes cardGlow {
-      0% { box-shadow: 0 6px 20px rgba(15, 98, 254, 0.4); border-color: rgba(0, 210, 255, 0.4); }
-      100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.75); border-color: rgba(0, 210, 255, 0.95); }
+      0% { box-shadow: 0 4px 15px rgba(15, 98, 254, 0.3); border-color: rgba(0, 210, 255, 0.4); }
+      100% { box-shadow: 0 8px 25px rgba(0, 210, 255, 0.65); border-color: rgba(0, 210, 255, 0.95); }
     }
     .vip-telegram-pass:active { transform: scale(0.97); }
     .vip-telegram-pass::after {
@@ -310,54 +244,55 @@
     .vip-card-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .vip-icon-wrap {
-      width: 38px;
-      height: 38px;
+      width: 32px; 
+      height: 32px;
       background: rgba(255, 255, 255, 0.18);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       backdrop-filter: blur(8px);
     }
-    .vip-icon-wrap svg { width: 22px; height: 22px; fill: #fff; }
+    .vip-icon-wrap svg { width: 18px; height: 18px; fill: #fff; }
     .vip-text-box {
       display: flex;
       flex-direction: column;
       text-align: left;
     }
     .vip-text-title {
-      font-size: 13.5px;
+      font-size: 12px; 
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      line-height: 1.2;
+      line-height: 1.1;
     }
     .vip-text-desc {
-      font-size: 10px;
+      font-size: 9.5px;
       color: rgba(255, 255, 255, 0.9);
       font-weight: 600;
+      margin-top: 1.5px;
     }
     .btn-tap-pill {
       background: #fff;
       color: #0f62fe;
-      font-size: 11px;
+      font-size: 10px; 
       font-weight: 900;
-      padding: 7px 12px;
-      border-radius: 8px;
+      padding: 5px 10px;
+      border-radius: 6px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       flex-shrink: 0;
     }
 
     .controls-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 10px;
     }
     .interactive-btn {
       background: var(--app-card);
@@ -529,22 +464,111 @@
       gap: 12px; z-index: 9998; padding: 20px; text-align: center;
     }
     #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #e50914; }
+
+    /* ========================================================
+       TAB MENU CSS (HORIZONTAL CHANNELS LIST)
+       ======================================================== */
+    .tabs-wrapper {
+      margin-top: 15px;
+      width: 100%;
+    }
+    .tabs-container {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .tabs-container::-webkit-scrollbar {
+      display: none;
+    }
+    .tab-btn {
+      background: var(--app-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--app-border);
+      color: var(--text-sub);
+      padding: 10px 18px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--app-blue), #0043ce);
+      color: #fff;
+      border-color: rgba(0, 210, 255, 0.5);
+      box-shadow: 0 4px 15px rgba(15, 98, 254, 0.45);
+    }
+    .channels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .channel-item {
+      background: rgba(14, 21, 38, 0.6);
+      border: 1px solid var(--app-border);
+      border-radius: 11px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #fff;
+      transition: all 0.2s ease;
+      min-height: 46px; 
+    }
+    .channel-item:hover, .channel-item:active {
+      background: rgba(15, 98, 254, 0.15);
+      border-color: rgba(0, 210, 255, 0.4);
+      transform: translateY(-2px);
+    }
+    
+    /* 🔥 NEW: HIGHLIGHT ACTIVE CHANNEL 🔥 */
+    .channel-item.active-channel {
+      background: rgba(15, 98, 254, 0.25);
+      border-color: rgba(0, 210, 255, 0.8);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+    }
+    .channel-item.active-channel .channel-icon {
+      background: var(--app-blue);
+    }
+    .channel-item.active-channel .channel-icon i {
+      color: #fff;
+    }
+
+    .channel-icon {
+      background: rgba(255, 255, 255, 0.1);
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .channel-icon i {
+      font-size: 15px;
+      color: var(--app-cyan);
+    }
+    .channel-name {
+      font-size: 10px; 
+      font-weight: 800;
+      white-space: normal; 
+      word-break: break-word;
+      text-transform: uppercase;
+      line-height: 1.25;
+      letter-spacing: 0.3px;
+    }
   </style>
 </head>
 <body>
-
-  <!-- ========================================================
-       SPLASH SCREEN
-       ======================================================== -->
-  <div id="loading-screen">
-    <div class="splash-logo-container">
-      <div class="splash-glow-halo"></div>
-      <h1 class="splash-logo-text">mohit vox</h1>
-    </div>
-    <div class="splash-progress-track">
-      <div class="splash-progress-bar"></div>
-    </div>
-  </div>
 
   <!-- TOAST FEEDBACK -->
   <div id="toastMessage" class="app-toast">
@@ -564,7 +588,7 @@
        ======================================================== -->
   <header>
     <div class="header-logo-wrap">
-      <h1 class="header-logo-text">mohit vox</h1>
+      <h1 class="header-logo-text">Mohitvox</h1>
       <div class="stream-live-badge">
         <div class="live-pulse-dot"></div> LIVE
       </div>
@@ -580,14 +604,13 @@
     </div>
   </div>
 
-  <!-- STREAM ROOM META BAR -->
+  <!-- ========================================================
+       COMPACT STREAM ROOM META BAR 
+       ======================================================== -->
   <div class="stream-room-meta">
-    <div class="stream-room-left">
-      <div class="channel-header-row">
-        <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
-        <span class="verified-badge"><i class="material-icons" style="font-size: 15px;">verified</i></span>
-      </div>
-      <div class="stream-room-sub">Official HD Broadcast Room</div>
+    <div class="channel-header-row">
+      <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
+      <span class="verified-badge"><i class="material-icons" style="font-size: 16px;">verified</i></span>
     </div>
   </div>
 
@@ -596,18 +619,18 @@
        ======================================================== -->
   <div class="room-actions-container">
     
-    <!-- VIP 1-CLICK JOIN BAR -->
+    <!-- 🔥 UPDATED SLIM VIP 1-CLICK JOIN BAR 🔥 -->
     <a href="https://t.me/addlist/ZVgzdiBtVBwzM2M1" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
         </div>
         <div class="vip-text-box">
-          <div class="vip-text-title">Join Official Telegram</div>
-          <div class="vip-text-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
+          <div class="vip-text-title">Join For More Updates</div>
+          <div class="vip-text-desc">Get backup links & live updates</div>
         </div>
       </div>
-      <div class="btn-tap-pill">TAP HERE 👉</div>
+      <div class="btn-tap-pill">JOIN 👉</div>
     </a>
 
     <!-- QUICK CONTROLS -->
@@ -618,6 +641,15 @@
       <button onclick="handleShare()" class="interactive-btn">
         <i class="material-icons">share</i> Share Stream
       </button>
+    </div>
+
+    <!-- TAB MENU SECTION FOR CHANNELS -->
+    <div class="tabs-wrapper" id="tabsSection" style="display: none;">
+      <!-- Horizontal Scrollable Tab Buttons -->
+      <div class="tabs-container" id="tabsContainer"></div>
+      
+      <!-- Grid Where Channels Will Show Up -->
+      <div class="channels-grid" id="channelsGrid"></div>
     </div>
 
   </div>
@@ -631,7 +663,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
 
-      <div class="popup-brand-name">mohit vox</div>
+      <div class="popup-brand-name">Mohitvox</div>
       
       <div class="popup-title-english">
         Unlock <span>Full Stream</span> Access
@@ -657,13 +689,14 @@
        ======================================================== -->
   <script>
     const CONFIG = { 
-      preview: 5000 // 5 seconds preview before popup shows up
+      preview: 5000 
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_LINK = "https://t.me/addlist/ZVgzdiBtVBwzM2M1";
+    
+    let globalGroupedChannels = {}; 
 
     window.onload = () => {
-      // Show popup after 5 seconds, BUT video remains fully playable in background
       setTimeout(() => {
         document.getElementById('forcePop').classList.add('active');
       }, CONFIG.preview);
@@ -671,21 +704,21 @@
       loadStream();
     };
 
-    // 1. STREAM LOADER (DYNAMIC VIA JSON)
     async function loadStream() {
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
-      
-      if (!id) {
-        showError("No channel ID specified.");
-        return;
-      }
 
       try {
         const response = await fetch(JSON_URL + "?t=" + Date.now());
         if (!response.ok) throw new Error("Fetch failed");
         
         const data = await response.json();
+        setupTabs(data); 
+
+        if (!id) {
+          return;
+        }
+
         let iframeSrc = "";
         let channelTitle = id.replace(/[-_]/g, ' ').toUpperCase();
 
@@ -697,7 +730,8 @@
               channelTitle = found.name || found.channel || found.title || found.channelName;
             }
           }
-        } else if (data.channels && data.channels[id]) {
+        } 
+        else if (data.channels && data.channels[id]) {
           if (typeof data.channels[id] === 'object') {
             iframeSrc = data.channels[id].iframeSrc || data.channels[id].link || data.channels[id].url;
             channelTitle = data.channels[id].name || data.channels[id].channel || channelTitle;
@@ -714,36 +748,108 @@
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
         document.getElementById('main-player').src = iframeSrc;
         
-        // Hide splash screen smoothly
-        const splash = document.getElementById('loading-screen');
-        splash.style.opacity = '0';
-        setTimeout(() => { splash.style.display = 'none'; }, 450);
-
       } catch (e) {
         showError("Failed to fetch stream details.");
       }
     }
 
+    function setupTabs(data) {
+      const tabsSection = document.getElementById('tabsSection');
+      const tabsContainer = document.getElementById('tabsContainer');
+      
+      if (data.iframes && data.iframes.length > 0) {
+        tabsSection.style.display = 'block';
+        
+        const categoryOrder = ["Star Sports", "Sony Sports", "iPhone", "World Wide"];
+        categoryOrder.forEach(cat => globalGroupedChannels[cat] = []);
+
+        const params = new URLSearchParams(window.location.search);
+        const currentId = params.get("id");
+        let activeCat = null;
+
+        data.iframes.forEach(ch => {
+          if (ch.iframeSrc && ch.iframeSrc.trim() !== "") {
+            let cat = categoryOrder.includes(ch.category) ? ch.category : "World Wide";
+            globalGroupedChannels[cat].push(ch);
+            
+            if (currentId && ch.id === currentId) {
+              activeCat = cat;
+            }
+          }
+        });
+
+        tabsContainer.innerHTML = '';
+        let firstAvailableCat = null;
+        let activeBtn = null;
+
+        categoryOrder.forEach(cat => {
+          if (globalGroupedChannels[cat].length > 0) {
+            if(!firstAvailableCat) firstAvailableCat = cat; 
+            
+            let btn = document.createElement('button');
+            btn.className = 'tab-btn';
+            btn.innerText = cat;
+            btn.onclick = () => switchTab(cat, btn); 
+            tabsContainer.appendChild(btn);
+
+            if (activeCat === cat) {
+              activeBtn = btn;
+            }
+          }
+        });
+
+        if (activeBtn) {
+          switchTab(activeCat, activeBtn);
+        } else if (tabsContainer.firstChild) {
+          switchTab(firstAvailableCat, tabsContainer.firstChild);
+        }
+      }
+    }
+
+    function switchTab(category, btnElement) {
+      const allTabs = document.querySelectorAll('.tab-btn');
+      allTabs.forEach(t => t.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const grid = document.getElementById('channelsGrid');
+      grid.innerHTML = '';
+      
+      // 🔥 Get current ID to highlight the active channel 🔥
+      const currentId = new URLSearchParams(window.location.search).get("id");
+
+      globalGroupedChannels[category].forEach(ch => {
+        let a = document.createElement('a');
+        a.href = "?id=" + ch.id;
+        a.className = "channel-item";
+        
+        // Agar ye wahi channel hai jo play ho raha hai, toh 'active-channel' class lagao
+        if (ch.id === currentId) {
+          a.classList.add("active-channel");
+        }
+
+        a.innerHTML = `
+          <div class="channel-icon"><i class="material-icons">play_arrow</i></div>
+          <span class="channel-name">${ch.name}</span>
+        `;
+        grid.appendChild(a);
+      });
+    }
+
     function showError(msg) {
-      document.getElementById('loading-screen').style.display = 'none';
       const errScreen = document.getElementById('error-screen');
       errScreen.style.display = 'flex';
       document.getElementById('error-msg').innerText = msg;
     }
 
-    // 2. UNLOCK ACCESS VERIFICATION
     function unlockStream() {
-      // Closes popup allowing the user to interact with the video again
       document.getElementById('forcePop').classList.remove('active');
     }
 
     function goTelegram() {
-      // Opens telegram and unlocks the video
       unlockStream();
       window.open(TELEGRAM_LINK, "_blank");
     }
 
-    // 3. UTILITIES
     function showToast(message) {
       const toast = document.getElementById('toastMessage');
       document.getElementById('toastText').innerText = message;
@@ -760,7 +866,7 @@
 
     function handleShare() {
       if (navigator.share) {
-        navigator.share({ title: 'mohit vox Live', url: window.location.href }).catch(() => {});
+        navigator.share({ title: 'Mohitvox Live', url: window.location.href }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
         showToast("Link copied to clipboard!");
