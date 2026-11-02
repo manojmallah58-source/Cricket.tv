@@ -153,14 +153,14 @@
     }
 
     /* ========================================================
-       COMPACT STREAM META BAR (HEIGHT REDUCED)
+       COMPACT STREAM META BAR 
        ======================================================== */
     .stream-room-meta {
       background: linear-gradient(to bottom, rgba(14, 21, 38, 0.95), rgba(8, 12, 23, 0.95));
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid rgba(0, 210, 255, 0.15);
-      padding: 10px 16px; /* Padding kam karke height choti kar di */
+      padding: 10px 16px; 
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -202,18 +202,19 @@
       width: 100%;
     }
 
+    /* 🔥 SLIM & COMPACT TELEGRAM BUTTON 🔥 */
     .vip-telegram-pass {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 12px 16px;
+      padding: 8px 12px; /* Motaapan kam kar diya (Patla design) */
       background: linear-gradient(135deg, #0f62fe 0%, #0043ce 100%);
-      border: 1.5px solid rgba(0, 210, 255, 0.55);
-      border-radius: 14px;
+      border: 1px solid rgba(0, 210, 255, 0.55);
+      border-radius: 10px; /* Radius thoda chota kiya */
       color: #fff;
       text-decoration: none;
-      box-shadow: 0 8px 25px rgba(15, 98, 254, 0.45);
+      box-shadow: 0 6px 20px rgba(15, 98, 254, 0.35);
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -221,8 +222,8 @@
       animation: cardGlow 2.5s infinite alternate;
     }
     @keyframes cardGlow {
-      0% { box-shadow: 0 6px 20px rgba(15, 98, 254, 0.4); border-color: rgba(0, 210, 255, 0.4); }
-      100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.75); border-color: rgba(0, 210, 255, 0.95); }
+      0% { box-shadow: 0 4px 15px rgba(15, 98, 254, 0.3); border-color: rgba(0, 210, 255, 0.4); }
+      100% { box-shadow: 0 8px 25px rgba(0, 210, 255, 0.65); border-color: rgba(0, 210, 255, 0.95); }
     }
     .vip-telegram-pass:active { transform: scale(0.97); }
     .vip-telegram-pass::after {
@@ -243,47 +244,48 @@
     .vip-card-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .vip-icon-wrap {
-      width: 38px;
-      height: 38px;
+      width: 32px; /* Icon ka size patla aur chota kiya */
+      height: 32px;
       background: rgba(255, 255, 255, 0.18);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       backdrop-filter: blur(8px);
     }
-    .vip-icon-wrap svg { width: 22px; height: 22px; fill: #fff; }
+    .vip-icon-wrap svg { width: 18px; height: 18px; fill: #fff; }
     .vip-text-box {
       display: flex;
       flex-direction: column;
       text-align: left;
     }
     .vip-text-title {
-      font-size: 13.5px;
+      font-size: 12px; /* Text size thoda adjust kiya */
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      line-height: 1.2;
+      line-height: 1.1;
     }
     .vip-text-desc {
-      font-size: 10px;
+      font-size: 9.5px;
       color: rgba(255, 255, 255, 0.9);
       font-weight: 600;
+      margin-top: 1.5px;
     }
     .btn-tap-pill {
       background: #fff;
       color: #0f62fe;
-      font-size: 11px;
+      font-size: 10px; /* Button chota aur pyara */
       font-weight: 900;
-      padding: 7px 12px;
-      border-radius: 8px;
+      padding: 5px 10px;
+      border-radius: 6px;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       flex-shrink: 0;
     }
 
@@ -603,18 +605,18 @@
        ======================================================== -->
   <div class="room-actions-container">
     
-    <!-- VIP 1-CLICK JOIN BAR -->
+    <!-- 🔥 UPDATED SLIM VIP 1-CLICK JOIN BAR 🔥 -->
     <a href="https://t.me/+mQXe_zKZQlgyZjY1" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
         </div>
         <div class="vip-text-box">
-          <div class="vip-text-title">Join Official Telegram</div>
-          <div class="vip-text-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
+          <div class="vip-text-title">Join For More Updates</div>
+          <div class="vip-text-desc">Get backup links & live updates</div>
         </div>
       </div>
-      <div class="btn-tap-pill">TAP HERE 👉</div>
+      <div class="btn-tap-pill">JOIN 👉</div>
     </a>
 
     <!-- QUICK CONTROLS -->
