@@ -208,10 +208,10 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 8px 12px; /* Motaapan kam kar diya (Patla design) */
+      padding: 8px 12px; 
       background: linear-gradient(135deg, #0f62fe 0%, #0043ce 100%);
       border: 1px solid rgba(0, 210, 255, 0.55);
-      border-radius: 10px; /* Radius thoda chota kiya */
+      border-radius: 10px; 
       color: #fff;
       text-decoration: none;
       box-shadow: 0 6px 20px rgba(15, 98, 254, 0.35);
@@ -247,7 +247,7 @@
       gap: 10px;
     }
     .vip-icon-wrap {
-      width: 32px; /* Icon ka size patla aur chota kiya */
+      width: 32px; 
       height: 32px;
       background: rgba(255, 255, 255, 0.18);
       border-radius: 8px;
@@ -264,7 +264,7 @@
       text-align: left;
     }
     .vip-text-title {
-      font-size: 12px; /* Text size thoda adjust kiya */
+      font-size: 12px; 
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -279,7 +279,7 @@
     .btn-tap-pill {
       background: #fff;
       color: #0f62fe;
-      font-size: 10px; /* Button chota aur pyara */
+      font-size: 10px; 
       font-weight: 900;
       padding: 5px 10px;
       border-radius: 6px;
@@ -699,7 +699,7 @@
         if (!response.ok) throw new Error("Fetch failed");
         
         const data = await response.json();
-        setupTabs(data);
+        setupTabs(data); // Ye function ab 'active tab' bhi sambhalega
 
         if (!id) {
           return;
@@ -747,18 +747,28 @@
         tabsSection.style.display = 'block';
         
         const categoryOrder = ["Star Sports", "Sony Sports", "iPhone", "World Wide"];
-        
         categoryOrder.forEach(cat => globalGroupedChannels[cat] = []);
+
+        // URL se current play hone wale channel ka ID check karo
+        const params = new URLSearchParams(window.location.search);
+        const currentId = params.get("id");
+        let activeCat = null;
 
         data.iframes.forEach(ch => {
           if (ch.iframeSrc && ch.iframeSrc.trim() !== "") {
             let cat = categoryOrder.includes(ch.category) ? ch.category : "World Wide";
             globalGroupedChannels[cat].push(ch);
+            
+            // Agar ye channel URL wale ID se match karta hai, toh uski category note kar lo
+            if (currentId && ch.id === currentId) {
+              activeCat = cat;
+            }
           }
         });
 
         tabsContainer.innerHTML = '';
         let firstAvailableCat = null;
+        let activeBtn = null;
 
         categoryOrder.forEach(cat => {
           if (globalGroupedChannels[cat].length > 0) {
@@ -769,10 +779,18 @@
             btn.innerText = cat;
             btn.onclick = () => switchTab(cat, btn); 
             tabsContainer.appendChild(btn);
+
+            // Jo category active karni hai, uska button save kar lo
+            if (activeCat === cat) {
+              activeBtn = btn;
+            }
           }
         });
 
-        if (firstAvailableCat) {
+        // Ab agar koi channel play ho raha hai, toh uska tab kholo, varna pehla tab kholo
+        if (activeBtn) {
+          switchTab(activeCat, activeBtn);
+        } else if (tabsContainer.firstChild) {
           switchTab(firstAvailableCat, tabsContainer.firstChild);
         }
       }
