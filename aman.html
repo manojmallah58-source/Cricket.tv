@@ -48,7 +48,7 @@
     }
 
     /* ========================================================
-       CLEAN SPLASH SCREEN (ANIMATION REMOVED AS REQUESTED)
+       CLEAN SPLASH SCREEN (ANIMATION REMOVED)
        ======================================================== */
     #loading-screen {
       position: fixed;
@@ -153,27 +153,21 @@
     }
 
     /* ========================================================
-       PERFECTED STREAM META BAR (CHANNEL NAME DESIGN)
+       COMPACT STREAM META BAR (HEIGHT REDUCED)
        ======================================================== */
     .stream-room-meta {
       background: linear-gradient(to bottom, rgba(14, 21, 38, 0.95), rgba(8, 12, 23, 0.95));
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       border-bottom: 1px solid rgba(0, 210, 255, 0.15);
-      padding: 14px 16px;
+      padding: 10px 16px; /* Padding kam karke height choti kar di */
       display: flex;
       align-items: center;
-      justify-content: space-between;
-    }
-    .stream-room-left {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      width: 100%;
+      justify-content: flex-start;
     }
     .channel-header-row {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 6px;
     }
     .channel-name-txt {
@@ -182,7 +176,7 @@
       font-weight: 900;
       color: #fff;
       text-transform: uppercase;
-      white-space: normal; /* Name ab katega nahi */
+      white-space: normal;
       word-break: break-word;
       line-height: 1.2;
       letter-spacing: 0.5px;
@@ -193,14 +187,6 @@
       font-size: 16px;
       display: flex;
       align-items: center;
-      margin-top: 1px;
-    }
-    .stream-room-sub {
-      font-size: 10px;
-      color: var(--text-sub);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
     }
 
     /* ========================================================
@@ -478,7 +464,7 @@
     #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #e50914; }
 
     /* ========================================================
-       TAB MENU CSS (PERFECTED CHANNELS TEXT & GRID)
+       TAB MENU CSS (HORIZONTAL CHANNELS LIST)
        ======================================================== */
     .tabs-wrapper {
       margin-top: 15px;
@@ -534,7 +520,7 @@
       text-decoration: none;
       color: #fff;
       transition: all 0.2s ease;
-      min-height: 46px; /* Uniform height even if text wraps */
+      min-height: 46px; 
     }
     .channel-item:hover, .channel-item:active {
       background: rgba(15, 98, 254, 0.15);
@@ -555,12 +541,10 @@
       font-size: 15px;
       color: var(--app-cyan);
     }
-    
-    /* PERFECTED NAME TEXT - FULL VISIBILITY */
     .channel-name {
-      font-size: 10px; /* Chota size */
+      font-size: 10px; 
       font-weight: 800;
-      white-space: normal; /* Katega nahi, dusri line mein aayega */
+      white-space: normal; 
       word-break: break-word;
       text-transform: uppercase;
       line-height: 1.25;
@@ -605,15 +589,12 @@
   </div>
 
   <!-- ========================================================
-       PERFECTED STREAM ROOM META BAR 
+       COMPACT STREAM ROOM META BAR 
        ======================================================== -->
   <div class="stream-room-meta">
-    <div class="stream-room-left">
-      <div class="channel-header-row">
-        <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
-        <span class="verified-badge"><i class="material-icons" style="font-size: 16px;">verified</i></span>
-      </div>
-      <div class="stream-room-sub">Official HD Broadcast Room</div>
+    <div class="channel-header-row">
+      <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
+      <span class="verified-badge"><i class="material-icons" style="font-size: 16px;">verified</i></span>
     </div>
   </div>
 
