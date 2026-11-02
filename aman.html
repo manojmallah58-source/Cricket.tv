@@ -7,7 +7,7 @@
   
   <!-- Fonts & Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800;900&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
   
   <style>
     /* ========================================================
@@ -45,78 +45,6 @@
       overflow-x: hidden;
       min-height: 100vh;
       width: 100%;
-    }
-
-    /* ========================================================
-       CLEAN SPLASH SCREEN
-       ======================================================== */
-    #loading-screen {
-      position: fixed;
-      inset: 0;
-      background: #05070f;
-      background-image: radial-gradient(circle at 50% 45%, #14244d 0%, #070a16 65%, #030408 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 22px;
-      z-index: 99999;
-      transition: opacity 0.45s ease, visibility 0.45s;
-    }
-    .splash-logo-container {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .splash-glow-halo {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(0, 210, 255, 0.35) 0%, transparent 70%);
-      filter: blur(16px);
-      animation: splashAura 2s infinite ease-in-out;
-    }
-    .splash-logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 46px;
-      color: #fff;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 2;
-      text-shadow: 0 0 25px rgba(15, 98, 254, 0.7);
-      animation: pulseSplashText 1.9s infinite ease-in-out;
-      margin: 0;
-      line-height: 1;
-    }
-    @keyframes splashAura {
-      0%, 100% { transform: scale(0.9); opacity: 0.5; }
-      50% { transform: scale(1.3); opacity: 0.95; }
-    }
-    @keyframes pulseSplashText {
-      0%, 100% { transform: scale(1); text-shadow: 0 0 20px rgba(15, 98, 254, 0.5); }
-      50% { transform: scale(1.05); text-shadow: 0 0 35px rgba(0, 210, 255, 0.85); }
-    }
-    .splash-progress-track {
-      width: 150px;
-      height: 3.5px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
-      overflow: hidden;
-      position: relative;
-    }
-    .splash-progress-bar {
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(90deg, var(--app-blue), var(--app-cyan));
-      border-radius: 6px;
-      position: absolute;
-      animation: progressSweep 1.1s infinite ease-in-out;
-    }
-    @keyframes progressSweep {
-      0% { left: -50%; }
-      100% { left: 100%; }
     }
 
     /* ========================================================
@@ -208,14 +136,14 @@
     }
 
     /* ========================================================
-       STREAM META BAR
+       PERFECTED STREAM META BAR (CHANNEL NAME DESIGN)
        ======================================================== */
     .stream-room-meta {
-      background: rgba(11, 17, 32, 0.85);
+      background: linear-gradient(to bottom, rgba(14, 21, 38, 0.95), rgba(8, 12, 23, 0.95));
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
-      border-bottom: 1px solid var(--app-border);
-      padding: 10px 14px;
+      border-bottom: 1px solid rgba(0, 210, 255, 0.15); /* Premium cyan border */
+      padding: 14px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -223,7 +151,7 @@
     .stream-room-left {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 5px;
       width: 100%;
     }
     .channel-header-row {
@@ -233,37 +161,38 @@
     }
     .channel-name-txt {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 13.5px;
-      font-weight: 800;
+      font-size: 16px;
+      font-weight: 900;
       color: #fff;
       text-transform: uppercase;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
     .verified-badge {
       color: var(--app-cyan);
-      font-size: 15px;
+      font-size: 16px;
       display: flex;
       align-items: center;
     }
     .stream-room-sub {
-      font-size: 9.5px;
+      font-size: 10px;
       color: var(--text-sub);
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.8px;
     }
 
     /* ========================================================
        ACTIONS AREA
        ======================================================== */
     .room-actions-container {
-      padding: 12px 14px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       max-width: 520px;
       margin: 0 auto;
       width: 100%;
@@ -357,7 +286,7 @@
     .controls-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 10px;
     }
     .interactive-btn {
       background: var(--app-card);
@@ -531,7 +460,7 @@
     #error-screen h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #e50914; }
 
     /* ========================================================
-       NEW TAB MENU CSS (ADDED WITHOUT CHANGING ORIGINAL CSS)
+       TAB MENU CSS (HORIZONTAL CHANNELS LIST)
        ======================================================== */
     .tabs-wrapper {
       margin-top: 15px;
@@ -618,19 +547,6 @@
 </head>
 <body>
 
-  <!-- ========================================================
-       SPLASH SCREEN
-       ======================================================== -->
-  <div id="loading-screen">
-    <div class="splash-logo-container">
-      <div class="splash-glow-halo"></div>
-      <h1 class="splash-logo-text">Aman army cricket</h1>
-    </div>
-    <div class="splash-progress-track">
-      <div class="splash-progress-bar"></div>
-    </div>
-  </div>
-
   <!-- TOAST FEEDBACK -->
   <div id="toastMessage" class="app-toast">
     <i class="material-icons" style="color: var(--app-cyan); font-size: 16px;">check_circle</i>
@@ -665,12 +581,14 @@
     </div>
   </div>
 
-  <!-- STREAM ROOM META BAR -->
+  <!-- ========================================================
+       PERFECTED STREAM ROOM META BAR 
+       ======================================================== -->
   <div class="stream-room-meta">
     <div class="stream-room-left">
       <div class="channel-header-row">
         <span class="channel-name-txt" id="channel-name">LIVE BROADCAST</span>
-        <span class="verified-badge"><i class="material-icons" style="font-size: 15px;">verified</i></span>
+        <span class="verified-badge"><i class="material-icons" style="font-size: 16px;">verified</i></span>
       </div>
       <div class="stream-room-sub">Official HD Broadcast Room</div>
     </div>
@@ -705,7 +623,7 @@
       </button>
     </div>
 
-    <!-- NEW TAB MENU SECTION FOR CHANNELS -->
+    <!-- TAB MENU SECTION FOR CHANNELS -->
     <div class="tabs-wrapper" id="tabsSection" style="display: none;">
       <!-- Horizontal Scrollable Tab Buttons -->
       <div class="tabs-container" id="tabsContainer"></div>
@@ -756,7 +674,7 @@
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_LINK = "https://t.me/+mQXe_zKZQlgyZjY1";
     
-    let globalGroupedChannels = {}; // JSON से चैनल्स यहाँ सेव होंगे
+    let globalGroupedChannels = {}; 
 
     window.onload = () => {
       // Show popup after 5 seconds, BUT video remains fully playable in background
@@ -783,10 +701,6 @@
 
         // अगर कोई ID नहीं है URL में
         if (!id) {
-          // लोडिंग स्क्रीन हटा दो, यूज़र नीचे से चैनल सेलेक्ट करेगा
-          const splash = document.getElementById('loading-screen');
-          splash.style.opacity = '0';
-          setTimeout(() => { splash.style.display = 'none'; }, 450);
           return;
         }
 
@@ -820,11 +734,6 @@
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
         document.getElementById('main-player').src = iframeSrc;
         
-        // Hide splash screen smoothly
-        const splash = document.getElementById('loading-screen');
-        splash.style.opacity = '0';
-        setTimeout(() => { splash.style.display = 'none'; }, 450);
-
       } catch (e) {
         showError("Failed to fetch stream details.");
       }
@@ -899,7 +808,6 @@
     }
 
     function showError(msg) {
-      document.getElementById('loading-screen').style.display = 'none';
       const errScreen = document.getElementById('error-screen');
       errScreen.style.display = 'flex';
       document.getElementById('error-msg').innerText = msg;
