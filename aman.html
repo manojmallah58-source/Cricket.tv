@@ -529,6 +529,20 @@
       border-color: rgba(0, 210, 255, 0.4);
       transform: translateY(-2px);
     }
+    
+    /* 🔥 NEW: HIGHLIGHT ACTIVE CHANNEL 🔥 */
+    .channel-item.active-channel {
+      background: rgba(15, 98, 254, 0.25);
+      border-color: rgba(0, 210, 255, 0.8);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+    }
+    .channel-item.active-channel .channel-icon {
+      background: var(--app-blue);
+    }
+    .channel-item.active-channel .channel-icon i {
+      color: #fff;
+    }
+
     .channel-icon {
       background: rgba(255, 255, 255, 0.1);
       width: 26px;
@@ -699,7 +713,7 @@
         if (!response.ok) throw new Error("Fetch failed");
         
         const data = await response.json();
-        setupTabs(data); // Ye function ab 'active tab' bhi sambhalega
+        setupTabs(data); 
 
         if (!id) {
           return;
@@ -749,7 +763,6 @@
         const categoryOrder = ["Star Sports", "Sony Sports", "iPhone", "World Wide"];
         categoryOrder.forEach(cat => globalGroupedChannels[cat] = []);
 
-        // URL se current play hone wale channel ka ID check karo
         const params = new URLSearchParams(window.location.search);
         const currentId = params.get("id");
         let activeCat = null;
@@ -759,7 +772,6 @@
             let cat = categoryOrder.includes(ch.category) ? ch.category : "World Wide";
             globalGroupedChannels[cat].push(ch);
             
-            // Agar ye channel URL wale ID se match karta hai, toh uski category note kar lo
             if (currentId && ch.id === currentId) {
               activeCat = cat;
             }
@@ -780,14 +792,12 @@
             btn.onclick = () => switchTab(cat, btn); 
             tabsContainer.appendChild(btn);
 
-            // Jo category active karni hai, uska button save kar lo
             if (activeCat === cat) {
               activeBtn = btn;
             }
           }
         });
 
-        // Ab agar koi channel play ho raha hai, toh uska tab kholo, varna pehla tab kholo
         if (activeBtn) {
           switchTab(activeCat, activeBtn);
         } else if (tabsContainer.firstChild) {
@@ -804,10 +814,19 @@
       const grid = document.getElementById('channelsGrid');
       grid.innerHTML = '';
       
+      // 🔥 Get current ID to highlight the active channel 🔥
+      const currentId = new URLSearchParams(window.location.search).get("id");
+
       globalGroupedChannels[category].forEach(ch => {
         let a = document.createElement('a');
         a.href = "?id=" + ch.id;
         a.className = "channel-item";
+        
+        // Agar ye wahi channel hai jo play ho raha hai, toh 'active-channel' class lagao
+        if (ch.id === currentId) {
+          a.classList.add("active-channel");
+        }
+
         a.innerHTML = `
           <div class="channel-icon"><i class="material-icons">play_arrow</i></div>
           <span class="channel-name">${ch.name}</span>
