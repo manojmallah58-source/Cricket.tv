@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
-  <title>Malik bhai - Live Stream</title>
+  <title>Vipul Thakurwani - Live Stream</title>
   
   <!-- Fonts & Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -530,7 +530,7 @@
       transform: translateY(-2px);
     }
     
-    /* 🔥 NEW: HIGHLIGHT ACTIVE CHANNEL 🔥 */
+    /* 🔥 HIGHLIGHT ACTIVE CHANNEL 🔥 */
     .channel-item.active-channel {
       background: rgba(15, 98, 254, 0.25);
       border-color: rgba(0, 210, 255, 0.8);
@@ -588,7 +588,7 @@
        ======================================================== -->
   <header>
     <div class="header-logo-wrap">
-      <h1 class="header-logo-text">Malik bhai</h1>
+      <h1 class="header-logo-text">Vipul Thakurwani</h1>
       <div class="stream-live-badge">
         <div class="live-pulse-dot"></div> LIVE
       </div>
@@ -620,7 +620,7 @@
   <div class="room-actions-container">
     
     <!-- 🔥 UPDATED SLIM VIP 1-CLICK JOIN BAR 🔥 -->
-    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
+    <a href="https://t.me/+E2uD84MbjMI1YzY1" target="_blank" onclick="unlockStream()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
@@ -663,7 +663,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
       </div>
 
-      <div class="popup-brand-name">Malik bhai</div>
+      <div class="popup-brand-name">Vipul Thakurwani</div>
       
       <div class="popup-title-english">
         Unlock <span>Full Stream</span> Access
@@ -692,7 +692,7 @@
       preview: 5000 
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
-    const TELEGRAM_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
+    const TELEGRAM_LINK = "https://t.me/+E2uD84MbjMI1YzY1";
     
     let globalGroupedChannels = {}; 
 
@@ -814,7 +814,6 @@
       const grid = document.getElementById('channelsGrid');
       grid.innerHTML = '';
       
-      // 🔥 Get current ID to highlight the active channel 🔥
       const currentId = new URLSearchParams(window.location.search).get("id");
 
       globalGroupedChannels[category].forEach(ch => {
@@ -822,7 +821,6 @@
         a.href = "?id=" + ch.id;
         a.className = "channel-item";
         
-        // Agar ye wahi channel hai jo play ho raha hai, toh 'active-channel' class lagao
         if (ch.id === currentId) {
           a.classList.add("active-channel");
         }
@@ -866,7 +864,7 @@
 
     function handleShare() {
       if (navigator.share) {
-        navigator.share({ title: 'Malik bhai Live', url: window.location.href }).catch(() => {});
+        navigator.share({ title: 'Vipul Thakurwani Live', url: window.location.href }).catch(() => {});
       } else {
         navigator.clipboard.writeText(window.location.href);
         showToast("Link copied to clipboard!");
