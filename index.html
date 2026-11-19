@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
   <title>CRICKET YODDHA - Live Stream</title>
   
-  <!-- Fonts & Material Icons -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@700;800&family=Bebas+Neue&family=Chakra+Petch:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <style>
-    /* ========================================================
-       PREMIUM OTT THEME & COLOR VARIABLES
-       ======================================================== */
     :root {
       --app-bg: #060811;
       --app-navy: #0b1120;
@@ -21,7 +19,6 @@
       --app-border: rgba(255, 255, 255, 0.08);
       --app-blue: #0f62fe;
       --app-cyan: #00d2ff;
-      --app-gold: #ffb800;
       --app-live: #e50914;
       --accent-mint: #00f076;
       --text-main: #f8fafc;
@@ -51,7 +48,7 @@
     }
 
     /* ========================================================
-       CLEAN SPLASH SCREEN (LOGO & LOADER ONLY, NO TEXT)
+       CLEAN SPLASH SCREEN
        ======================================================== */
     #loading-screen {
       position: fixed;
@@ -281,7 +278,7 @@
     }
 
     /* ========================================================
-       ACTIONS AREA (CLEAN & UNCLUTTERED)
+       ACTIONS & PROMO AREA
        ======================================================== */
     .room-actions-container {
       padding: 12px 14px;
@@ -408,7 +405,68 @@
     }
 
     /* ========================================================
-       MODAL OVERLAYS & POPUPS (GLASSMORPHISM)
+       PROMO + WHATSAPP CARD
+       ======================================================== */
+    .glass-card {
+      background: var(--app-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--app-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    }
+
+    .promo-card {
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .promo-banner {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      text-decoration: none;
+    }
+
+    .promo-banner-img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .btn-whatsapp {
+      width: 100%;
+      margin-top: 10px;
+      background: #25D366;
+      color: #ffffff !important;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      padding: 13px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      box-sizing: border-box;
+      transition: 0.2s ease;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+      transform: translateY(-1px);
+    }
+
+    .btn-whatsapp i {
+      font-size: 22px;
+    }
+
+    /* ========================================================
+       TELEGRAM UNLOCK POP-UP MODAL
        ======================================================== */
     .overlay {
       display: none;
@@ -441,7 +499,6 @@
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
 
-    /* INITIAL POPUP STYLES (PRESERVED) */
     .popup-icon {
       width: 46px;
       height: 46px;
@@ -492,121 +549,6 @@
     }
     .btn-join:active { transform: scale(0.97); }
 
-    /* ========================================================
-       TIMED LOOT POP-UP (EMBEDDED VIDEO & ENGLISH BUTTONS)
-       ======================================================== */
-    .popup-loot {
-      border: 1px solid rgba(255, 184, 0, 0.5);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 184, 0, 0.2);
-      padding: 18px 16px;
-      max-width: 330px;
-    }
-    .modal-loot-badge {
-      display: inline-block;
-      background: rgba(255, 184, 0, 0.15);
-      border: 1px solid rgba(255, 184, 0, 0.4);
-      color: var(--app-gold);
-      font-size: 8.5px;
-      font-weight: 900;
-      padding: 3px 9px;
-      border-radius: 20px;
-      margin-bottom: 8px;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-    }
-    /* Compact video frame inside the modal */
-    .modal-video-box {
-      width: 100%;
-      height: 112px;
-      border-radius: 12px;
-      overflow: hidden;
-      margin: 8px 0 10px;
-      position: relative;
-      background: #000;
-      border: 1px solid rgba(255, 184, 0, 0.35);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
-    }
-    .modal-video-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .modal-video-live-pill {
-      position: absolute;
-      top: 6px;
-      left: 6px;
-      background: var(--app-live);
-      color: #fff;
-      font-size: 7.5px;
-      font-weight: 900;
-      padding: 2px 6px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-      z-index: 2;
-    }
-
-    .modal-loot-title {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 4px;
-    }
-    .modal-loot-title span { color: var(--app-gold); }
-    .modal-loot-desc {
-      color: #94a3b8;
-      font-size: 11px;
-      line-height: 1.4;
-      margin-bottom: 14px;
-    }
-
-    .modal-actions-col {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 100%;
-    }
-    .btn-excited {
-      width: 100%;
-      padding: 12px;
-      background: linear-gradient(135deg, var(--app-gold) 0%, #ff5500 100%);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #000;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 900;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      box-shadow: 0 6px 18px rgba(255, 102, 0, 0.45);
-      transition: transform 0.15s ease;
-      animation: pulseBtn 1.8s infinite;
-    }
-    @keyframes pulseBtn {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-    .btn-excited:active { transform: scale(0.97); }
-    .btn-not-excited {
-      width: 100%;
-      padding: 9.5px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #94a3b8;
-      border-radius: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: all 0.15s ease;
-    }
-    .btn-not-excited:active {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-    }
-
     /* IN-APP TOAST */
     .app-toast {
       position: fixed;
@@ -648,7 +590,7 @@
 <body>
 
   <!-- ========================================================
-       SPLASH SCREEN (CLEAN LOGO & LOADER ONLY)
+       SPLASH SCREEN
        ======================================================== -->
   <div id="loading-screen">
     <div class="splash-logo-container">
@@ -686,11 +628,11 @@
   </header>
 
   <!-- ========================================================
-       MAIN PLAYER STAGE
+       MAIN PLAYER STAGE (PLAYS BEFORE POPUP APPEARS)
        ======================================================== -->
   <div id="main-stage">
     <div class="video-box">
-      <iframe id="main-player" allowfullscreen="true" scrolling="no" allow="autoplay; encrypted-media"></iframe>
+      <iframe id="main-player" allowfullscreen="true" scrolling="no" allow="autoplay; muted; encrypted-media; fullscreen"></iframe>
     </div>
   </div>
 
@@ -713,12 +655,12 @@
   </div>
 
   <!-- ========================================================
-       ACTIONS AREA (CLEAN UI - NO BOTTOM VIDEO CARD)
+       ACTIONS & PROMO AREA
        ======================================================== -->
   <div class="room-actions-container">
     
     <!-- VIP 1-CLICK JOIN BAR -->
-    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="verifyAccess()" class="vip-telegram-pass">
+    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" rel="noopener noreferrer" onclick="verifyAccess()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
@@ -741,10 +683,37 @@
       </button>
     </div>
 
+    <!-- COMBINED PROMO + WHATSAPP CARD -->
+    <div class="glass-card promo-card">
+
+      <!-- PROMOTIONAL BANNER -->
+      <a href="https://www.balaji99.life"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="promo-banner">
+
+        <img
+            src="https://liv18.pages.dev/promo.jpg"
+            alt="Promotion"
+            class="promo-banner-img">
+      </a>
+
+      <!-- WHATSAPP BUTTON -->
+      <a href="https://w.app/balajinew1"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-social btn-whatsapp">
+
+        <i class="fab fa-whatsapp"></i>
+        Get Your ID Directly on WhatsApp
+      </a>
+
+    </div>
+
   </div>
 
   <!-- ========================================================
-       INITIAL UNLOCK POP-UP (PRESERVED)
+       TELEGRAM UNLOCK POP-UP MODAL
        ======================================================== -->
   <div class="overlay" id="forcePop">
     <div class="popup">
@@ -769,43 +738,6 @@
   </div>
 
   <!-- ========================================================
-       TIMED LOOT POP-UP (AFTER 1 MINUTE / EMBEDDED VIDEO)
-       ======================================================== -->
-  <div class="overlay" id="timedLootPop">
-    <div class="popup popup-loot">
-      <div class="modal-loot-badge">🔥 Limited Loot Drop</div>
-
-      <!-- Embedded Video Box -->
-      <div class="modal-video-box">
-        <div class="modal-video-live-pill">LIVE LOOT</div>
-        <video id="modalLootVideo" autoplay muted playsinline loop>
-          <source src="https://files.catbox.moe/ht250d.mp4" type="video/mp4">
-        </video>
-      </div>
-      
-      <div class="modal-loot-title">
-        Exclusive <span>99% Bug Loots</span> & Deals!
-      </div>
-
-      <p class="modal-loot-desc">
-        Unlock secret price glitch deals, free shopping loots, and daily coupon codes right now!
-      </p>
-
-      <div class="modal-actions-col">
-        <!-- a) "I am Excited" Button -->
-        <button class="btn-excited" onclick="handleExcitedLoot()">
-          I AM EXCITED 🔥
-        </button>
-
-        <!-- b) "Not Excited" Button -->
-        <button class="btn-not-excited" onclick="handleNotExcitedLoot()">
-          Not Excited ✕
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================
        SCRIPTS & LOGIC INTEGRATION
        ======================================================== -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -815,29 +747,51 @@
     const CONFIG = { 
       key: "yoddha_access_v12", 
       timeKey: "yoddha_time_v12", 
-      preview: 5000, 
-      expiry: 86400000,
-      lootDelay: 60000 // 60 Seconds (1 Minute) Delay
+      preview: 5000,       // 5 seconds video play before Telegram pop-up
+      expiry: 86400000     // 24 hours (in ms) after which pop-up reappears
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
     const TELEGRAM_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
-    const LOOT_CHANNEL_LINK = "https://t.me/+dXBfsd_sqlU1YWY1";
+
+    function hasValid24hAccess() {
+      const lastJoin = Number(localStorage.getItem(CONFIG.timeKey) || 0);
+      if (!lastJoin) return false;
+      const elapsed = Date.now() - lastJoin;
+      return elapsed < CONFIG.expiry;
+    }
+
+    function schedulePopupIfExpired() {
+      if (hasValid24hAccess()) {
+        document.getElementById('main-stage').classList.remove('locked');
+        document.getElementById('forcePop').classList.remove('active');
+        return;
+      }
+
+      setTimeout(() => {
+        if (!hasValid24hAccess()) {
+          document.getElementById('main-stage').classList.add('locked');
+          document.getElementById('forcePop').classList.add('active');
+        }
+      }, CONFIG.preview);
+    }
+
+    function buildAutoplayUrl(rawUrl) {
+      try {
+        const parsed = new URL(rawUrl, window.location.href);
+        if (!parsed.searchParams.has("autoplay")) {
+          parsed.searchParams.set("autoplay", "1");
+        }
+        return parsed.toString();
+      } catch (_) {
+        const sep = rawUrl.includes("?") ? "&" : "?";
+        return rawUrl + sep + "autoplay=1";
+      }
+    }
 
     window.onload = () => {
-      const lastJoin = localStorage.getItem(CONFIG.timeKey);
-      const now = new Date().getTime();
-      
-      if (lastJoin && (now - lastJoin < CONFIG.expiry)) {
-        document.getElementById('main-stage').classList.remove('locked');
-      } else {
-        document.getElementById('main-stage').classList.add('locked');
-        setTimeout(() => {
-          document.getElementById('forcePop').classList.add('active');
-        }, CONFIG.preview);
-      }
-      
+      document.getElementById('main-stage').classList.remove('locked');
       loadStream();
-      initTimedLootPopup();
+      schedulePopupIfExpired();
     };
 
     // 1. STREAM LOADER (DYNAMIC VIA JSON)
@@ -881,9 +835,8 @@
         }
 
         document.getElementById('channel-name').innerText = channelTitle.toUpperCase();
-        document.getElementById('main-player').src = iframeSrc;
+        document.getElementById('main-player').src = buildAutoplayUrl(iframeSrc);
         
-        // Hide splash screen smoothly
         const splash = document.getElementById('loading-screen');
         splash.style.opacity = '0';
         setTimeout(() => { splash.style.display = 'none'; }, 450);
@@ -900,49 +853,20 @@
       document.getElementById('error-msg').innerText = msg;
     }
 
-    // 2. UNLOCK ACCESS VERIFICATION
+    // 2. UNLOCK ACCESS VERIFICATION (24 HOURS)
     function verifyAccess() {
       localStorage.setItem(CONFIG.key, 'true');
-      localStorage.setItem(CONFIG.timeKey, new Date().getTime());
+      localStorage.setItem(CONFIG.timeKey, String(Date.now()));
       document.getElementById('forcePop').classList.remove('active');
       document.getElementById('main-stage').classList.remove('locked');
     }
 
     function goTelegram() {
       verifyAccess();
-      window.open(TELEGRAM_LINK, "_blank");
+      window.open(TELEGRAM_LINK, "_blank", "noopener,noreferrer");
     }
 
-    // 3. 60-SECONDS TIMED LOOT POP-UP
-    function initTimedLootPopup() {
-      setTimeout(() => {
-        const forcePop = document.getElementById('forcePop');
-        // Trigger timed pop-up only if first lock is not currently showing
-        if (!forcePop.classList.contains('active')) {
-          const pop = document.getElementById('timedLootPop');
-          pop.classList.add('active');
-          const video = document.getElementById('modalLootVideo');
-          if (video) video.play().catch(() => {});
-        }
-      }, CONFIG.lootDelay);
-    }
-
-    // a) "I am Excited" Click Handler
-    function handleExcitedLoot() {
-      const video = document.getElementById('modalLootVideo');
-      if (video) video.pause();
-      document.getElementById('timedLootPop').classList.remove('active');
-      window.open(LOOT_CHANNEL_LINK, "_blank");
-    }
-
-    // b) "Not Excited" Click Handler
-    function handleNotExcitedLoot() {
-      const video = document.getElementById('modalLootVideo');
-      if (video) video.pause();
-      document.getElementById('timedLootPop').classList.remove('active');
-    }
-
-    // 4. UTILITIES
+    // 3. UTILITIES
     function showToast(message) {
       const toast = document.getElementById('toastMessage');
       document.getElementById('toastText').innerText = message;
@@ -966,7 +890,7 @@
       }
     }
 
-    // 5. FIREBASE LIVE VIEWERS SETUP
+    // 4. FIREBASE LIVE VIEWERS SETUP
     const firebaseConfig = { 
       apiKey: "AIzaSyA-vR50CMDYJVHApJir-6fmgRqhFiqQDU8", 
       authDomain: "my-website-cricket.firebaseapp.com", 
