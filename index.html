@@ -290,7 +290,7 @@
       width: 100%;
     }
 
-    .vip-telegram-pass {
+    .vip-whatsapp-pass {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -312,8 +312,8 @@
       0% { box-shadow: 0 6px 20px rgba(15, 98, 254, 0.4); border-color: rgba(0, 210, 255, 0.4); }
       100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.75); border-color: rgba(0, 210, 255, 0.95); }
     }
-    .vip-telegram-pass:active { transform: scale(0.97); }
-    .vip-telegram-pass::after {
+    .vip-whatsapp-pass:active { transform: scale(0.97); }
+    .vip-whatsapp-pass::after {
       content: '';
       position: absolute;
       top: -50%;
@@ -343,8 +343,9 @@
       justify-content: center;
       flex-shrink: 0;
       backdrop-filter: blur(8px);
+      font-size: 20px;
+      color: #fff;
     }
-    .vip-icon-wrap svg { width: 22px; height: 22px; fill: #fff; }
     .vip-text-box {
       display: flex;
       flex-direction: column;
@@ -466,7 +467,7 @@
     }
 
     /* ========================================================
-       TELEGRAM UNLOCK POP-UP MODAL
+       WHATSAPP CHANNEL UNLOCK POP-UP MODAL
        ======================================================== */
     .overlay {
       display: none;
@@ -509,8 +510,9 @@
       justify-content: center;
       margin: 0 auto 10px;
       box-shadow: 0 6px 18px rgba(15, 98, 254, 0.45);
+      font-size: 22px;
+      color: #fff;
     }
-    .popup-icon svg { width: 22px; height: 22px; fill: #fff; }
     .popup-brand-name {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 24px;
@@ -660,13 +662,13 @@
   <div class="room-actions-container">
     
     <!-- VIP 1-CLICK JOIN BAR -->
-    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" rel="noopener noreferrer" onclick="verifyAccess()" class="vip-telegram-pass">
+    <a href="https://whatsapp.com/channel/0029Va4Uu60C6ZvjNJIOzU06" target="_blank" rel="noopener noreferrer" onclick="verifyAccess()" class="vip-whatsapp-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+          <i class="fab fa-whatsapp"></i>
         </div>
         <div class="vip-text-box">
-          <div class="vip-text-title">Join Official Telegram</div>
+          <div class="vip-text-title">Join Official WhatsApp Channel</div>
           <div class="vip-text-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
         </div>
       </div>
@@ -713,12 +715,12 @@
   </div>
 
   <!-- ========================================================
-       TELEGRAM UNLOCK POP-UP MODAL
+       WHATSAPP CHANNEL UNLOCK POP-UP MODAL
        ======================================================== -->
   <div class="overlay" id="forcePop">
     <div class="popup">
       <div class="popup-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/></svg>
+        <i class="fab fa-whatsapp"></i>
       </div>
 
       <div class="popup-brand-name">CRICKET YODDHA</div>
@@ -728,11 +730,11 @@
       </div>
 
       <p class="popup-desc-english">
-        Join our official Telegram channel to unlock 24-hour uninterrupted HD access to this live match.
+        Join our official WhatsApp channel to unlock 24-hour uninterrupted HD access to this live match.
       </p>
 
-      <button class="btn-join" onclick="goTelegram()">
-        Join Telegram to Unlock →
+      <button class="btn-join" onclick="goWhatsAppChannel()">
+        Join WhatsApp Channel to Unlock →
       </button>
     </div>
   </div>
@@ -747,11 +749,11 @@
     const CONFIG = { 
       key: "yoddha_access_v12", 
       timeKey: "yoddha_time_v12", 
-      preview: 5000,       // 5 seconds video play before Telegram pop-up
+      preview: 5000,       // 5 seconds video play before WhatsApp pop-up
       expiry: 86400000     // 24 hours (in ms) after which pop-up reappears
     };
     const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
-    const TELEGRAM_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
+    const WHATSAPP_CHANNEL_LINK = "https://whatsapp.com/channel/0029Va4Uu60C6ZvjNJIOzU06";
 
     function hasValid24hAccess() {
       const lastJoin = Number(localStorage.getItem(CONFIG.timeKey) || 0);
@@ -861,9 +863,9 @@
       document.getElementById('main-stage').classList.remove('locked');
     }
 
-    function goTelegram() {
+    function goWhatsAppChannel() {
       verifyAccess();
-      window.open(TELEGRAM_LINK, "_blank", "noopener,noreferrer");
+      window.open(WHATSAPP_CHANNEL_LINK, "_blank", "noopener,noreferrer");
     }
 
     // 3. UTILITIES
