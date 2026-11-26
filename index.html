@@ -278,7 +278,7 @@
     }
 
     /* ========================================================
-       ACTIONS & PROMO AREA
+       ACTIONS AREA
        ======================================================== */
     .room-actions-container {
       padding: 12px 14px;
@@ -290,7 +290,7 @@
       width: 100%;
     }
 
-    .vip-whatsapp-pass {
+    .vip-telegram-pass {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -312,8 +312,8 @@
       0% { box-shadow: 0 6px 20px rgba(15, 98, 254, 0.4); border-color: rgba(0, 210, 255, 0.4); }
       100% { box-shadow: 0 10px 30px rgba(0, 210, 255, 0.75); border-color: rgba(0, 210, 255, 0.95); }
     }
-    .vip-whatsapp-pass:active { transform: scale(0.97); }
-    .vip-whatsapp-pass::after {
+    .vip-telegram-pass:active { transform: scale(0.97); }
+    .vip-telegram-pass::after {
       content: '';
       position: absolute;
       top: -50%;
@@ -406,68 +406,7 @@
     }
 
     /* ========================================================
-       PROMO + WHATSAPP CARD
-       ======================================================== */
-    .glass-card {
-      background: var(--app-card);
-      backdrop-filter: var(--glass-blur);
-      -webkit-backdrop-filter: var(--glass-blur);
-      border: 1px solid var(--app-border);
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-    }
-
-    .promo-card {
-      padding: 10px;
-      overflow: hidden;
-    }
-
-    .promo-banner {
-      display: block;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-      text-decoration: none;
-    }
-
-    .promo-banner-img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .btn-whatsapp {
-      width: 100%;
-      margin-top: 10px;
-      background: #25D366;
-      color: #ffffff !important;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      text-align: center;
-      padding: 13px;
-      border-radius: 12px;
-      font-weight: 700;
-      text-decoration: none;
-      box-sizing: border-box;
-      transition: 0.2s ease;
-    }
-
-    .btn-whatsapp:hover {
-      background: #1ebe5d;
-      transform: translateY(-1px);
-    }
-
-    .btn-whatsapp i {
-      font-size: 22px;
-    }
-
-    /* ========================================================
-       WHATSAPP CHANNEL UNLOCK POP-UP MODAL
+       TELEGRAM UNLOCK POP-UP MODAL
        ======================================================== */
     .overlay {
       display: none;
@@ -634,7 +573,11 @@
        ======================================================== -->
   <div id="main-stage">
     <div class="video-box">
-      <iframe id="main-player" allowfullscreen="true" scrolling="no" allow="autoplay; muted; encrypted-media; fullscreen"></iframe>
+      <iframe id="main-player"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
+        allowfullscreen="true"
+        scrolling="no"
+        allow="autoplay; muted; encrypted-media; fullscreen"></iframe>
     </div>
   </div>
 
@@ -657,18 +600,18 @@
   </div>
 
   <!-- ========================================================
-       ACTIONS & PROMO AREA
+       ACTIONS AREA
        ======================================================== -->
   <div class="room-actions-container">
     
     <!-- VIP 1-CLICK JOIN BAR -->
-    <a href="https://whatsapp.com/channel/0029Va4Uu60C6ZvjNJIOzU06" target="_blank" rel="noopener noreferrer" onclick="verifyAccess()" class="vip-whatsapp-pass">
+    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" rel="noopener noreferrer" onclick="verifyAccess()" class="vip-telegram-pass">
       <div class="vip-card-left">
         <div class="vip-icon-wrap">
-          <i class="fab fa-whatsapp"></i>
+          <i class="fab fa-telegram-plane"></i>
         </div>
         <div class="vip-text-box">
-          <div class="vip-text-title">Join Official WhatsApp Channel</div>
+          <div class="vip-text-title">Join Official Telegram Channel</div>
           <div class="vip-text-desc">1-Click Tap • Instant 24H Match VIP Pass</div>
         </div>
       </div>
@@ -685,42 +628,15 @@
       </button>
     </div>
 
-    <!-- COMBINED PROMO + WHATSAPP CARD -->
-    <div class="glass-card promo-card">
-
-      <!-- PROMOTIONAL BANNER -->
-      <a href="https://www.balaji99.life"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="promo-banner">
-
-        <img
-            src="https://liv18.pages.dev/promo.jpg"
-            alt="Promotion"
-            class="promo-banner-img">
-      </a>
-
-      <!-- WHATSAPP BUTTON -->
-      <a href="https://w.app/balajinew1"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="btn-social btn-whatsapp">
-
-        <i class="fab fa-whatsapp"></i>
-        Get Your ID Directly on WhatsApp
-      </a>
-
-    </div>
-
   </div>
 
   <!-- ========================================================
-       WHATSAPP CHANNEL UNLOCK POP-UP MODAL
+       TELEGRAM UNLOCK POP-UP MODAL
        ======================================================== -->
   <div class="overlay" id="forcePop">
     <div class="popup">
       <div class="popup-icon">
-        <i class="fab fa-whatsapp"></i>
+        <i class="fab fa-telegram-plane"></i>
       </div>
 
       <div class="popup-brand-name">CRICKET YODDHA</div>
@@ -730,11 +646,11 @@
       </div>
 
       <p class="popup-desc-english">
-        Join our official WhatsApp channel to unlock 24-hour uninterrupted HD access to this live match.
+        Join our official Telegram channel to unlock 24-hour uninterrupted HD access to this live match.
       </p>
 
-      <button class="btn-join" onclick="goWhatsAppChannel()">
-        Join WhatsApp Channel to Unlock →
+      <button class="btn-join" onclick="goTelegramChannel()">
+        Join Telegram Channel to Unlock →
       </button>
     </div>
   </div>
@@ -749,11 +665,11 @@
     const CONFIG = { 
       key: "yoddha_access_v12", 
       timeKey: "yoddha_time_v12", 
-      preview: 5000,       // 5 seconds video play before WhatsApp pop-up
+      preview: 5000,       // 5 seconds video play before Telegram pop-up
       expiry: 86400000     // 24 hours (in ms) after which pop-up reappears
     };
-    const JSON_URL = "https://cricket-yoddha-2-o-json.pages.dev/links.json";
-    const WHATSAPP_CHANNEL_LINK = "https://whatsapp.com/channel/0029Va4Uu60C6ZvjNJIOzU06";
+    const JSON_URL = "https://allrounder2-0.pages.dev/id.json";
+    const TELEGRAM_CHANNEL_LINK = "https://t.me/+rwZKMV0-L8wyOTll";
 
     function hasValid24hAccess() {
       const lastJoin = Number(localStorage.getItem(CONFIG.timeKey) || 0);
@@ -863,9 +779,9 @@
       document.getElementById('main-stage').classList.remove('locked');
     }
 
-    function goWhatsAppChannel() {
+    function goTelegramChannel() {
       verifyAccess();
-      window.open(WHATSAPP_CHANNEL_LINK, "_blank", "noopener,noreferrer");
+      window.open(TELEGRAM_CHANNEL_LINK, "_blank", "noopener,noreferrer");
     }
 
     // 3. UTILITIES
